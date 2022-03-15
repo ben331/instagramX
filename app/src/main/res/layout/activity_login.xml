@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login">
+    tools:context=".LoginActivity">
 
     <TextView
         android:id="@+id/loginTitle"
@@ -29,14 +29,14 @@
         android:layout_marginEnd="20dp"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginUser" />
+        app:layout_constraintTop_toBottomOf="@+id/loginUsername" />
 
     <EditText
-        android:id="@+id/loginUser"
+        android:id="@+id/loginUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
