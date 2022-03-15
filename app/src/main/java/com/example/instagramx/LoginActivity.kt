@@ -1,5 +1,6 @@
 package com.example.instagramx
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -33,10 +34,11 @@ class LoginActivity : AppCompatActivity() {
                 loginPassword.setText("")
                 Toast.makeText(this, "$username is not registered",Toast.LENGTH_SHORT).show()
             }else if(correctPassword == password){
-                var intent = Intent(this, HomeActivity::class.java).apply {
+                var intent = Intent(this, MainActivity::class.java).apply {
                     putExtra("username", username)
                 }
-                startActivity(intent)
+                setResult(Activity.RESULT_OK, intent)
+                finish()
             }else {
                 loginPassword.setText("")
                 Toast.makeText(this, "Incorrect password",Toast.LENGTH_SHORT).show()
