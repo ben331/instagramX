@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+
         //Go to Login or keep in home depending if is first login or not
         if(loggedUsername==null){
             var intent = Intent(this, LoginActivity::class.java)

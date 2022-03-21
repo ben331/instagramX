@@ -6,12 +6,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <Button
-        android:id="@+id/profileBackBtn"
+        android:id="@+id/postBackBtn"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:text="B"
+        android:paddingLeft="7dp"
+        android:shadowColor="#00FFFFFF"
+        android:textAlignment="center"
+        app:icon="@drawable/back"
+        app:iconPadding="0dp"
+        app:iconSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:rippleColor="@color/light_blue" />
@@ -30,7 +35,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/profileSaveBtn"
-        app:layout_constraintStart_toEndOf="@+id/profileBackBtn"
+        app:layout_constraintStart_toEndOf="@+id/postBackBtn"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -39,11 +44,17 @@
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
-        android:text="D"
+        android:paddingLeft="7dp"
+        android:paddingRight="0dp"
+        android:textAlignment="center"
+        app:icon="@drawable/done"
+        app:iconPadding="0dp"
+        app:iconSize="25dp"
+        app:iconTint="@color/light_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/profilePhoto"
         android:layout_width="84dp"
         android:layout_height="88dp"
@@ -58,10 +69,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Change prifle photo"
+        android:text="Change profle photo"
         android:textColor="@color/light_blue"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profilePhoto" />
@@ -74,6 +84,7 @@
         android:layout_marginTop="5dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:text="Alfa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,9 +97,11 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
+        android:editable="false"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="alfa_01"
+        android:minHeight="48dp"
+        android:text="alfa@gmail.com"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
