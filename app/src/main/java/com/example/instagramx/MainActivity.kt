@@ -7,10 +7,10 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.instagramx.databinding.ActivityMainBinding
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 
 class MainActivity : AppCompatActivity() {
-
-    var loggedUser: Unit = SingleLoggedUser.getInstance()
 
     //Fragments
     private lateinit var postFragment:PostFragment
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
     init{
         //Go to Login or keep in home depending if is first login or not
-        if(loggedUsername==null){
+        if(SingleLoggedUser.user == null){ //Now is always false, but with serialization it could be true
             val intent = Intent(this, LoginActivity::class.java)
             val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult(),::onResultLogin)
             launcher.launch(intent)
@@ -57,7 +57,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onResultLogin(result:ActivityResult) {
-        loggedUsername = result.data?.extras?.getString("username")
+        val json:String? = result.data?.extras?.getString("username")
+        val user = json?.let<String, User?> { Json.decodeFromString(it) }
+        SingleLoggedUser.user = user!!
         loadHome()
     }
 

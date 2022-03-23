@@ -1,17 +1,26 @@
 package com.example.instagramx
 
-class SingleLoggedUser {
 
-    var user:User = User("","")
+//Singleton
+object SingleLoggedUser {
+    lateinit var user:User
+}
 
-    companion object {
-        private var instance: SingleLoggedUser? = null
+/*
+class SingleLoggedUser private constructor() {
 
-        fun getInstance(){
-            if(instance!=null)
-                instance
-            else
+    companion object{
+        private var instance:SingleLoggedUser?=null
+        lateinit var user:User
+
+        fun getInstance() = synchronized(this){
+            if(instance==null){
                 instance = SingleLoggedUser()
+            }
+            else{
+                instance
+            }
         }
     }
 }
+ */

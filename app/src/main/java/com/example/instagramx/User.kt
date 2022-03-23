@@ -1,6 +1,9 @@
 package com.example.instagramx
 
-open class User (id:String, password:String){
-  lateinit var id:String
-  lateinit var password:String
+import kotlinx.serialization.Serializable
+
+@Serializable
+class User (id:String, password:String){
+  var id:String = id
+  var password:String = password
 }

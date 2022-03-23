@@ -5,51 +5,65 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.instagramx.databinding.ActivityLoginBinding
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 class LoginActivity : AppCompatActivity() {
+
+    private var _binding: ActivityLoginBinding?=null
+    private val binding get() = _binding!!
+
     private val defaultUsers = arrayOf(
         User("alfa@gmail.com","aplicacionesmoviles"),
         User("beta@gamil.com", "aplicacionesmoviles"))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        _binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        lateinit var username:String
-        lateinit var password:String
+        lateinit var user:User
 
-        loginBtn.setOnClickListener(){
-            username = loginUsername.text.toString()
-            password = loginPassword.text.toString()
+        binding.loginBtn.setOnClickListener {
+            val username = binding.loginUsername.text.toString()
+            val password = binding.loginPassword.text.toString()
 
             var correctPassword:String? = null
-            for(user in defaultUsers) {
-                if (user.id == username)
-                    correctPassword = user.password
+            for(element in defaultUsers) {
+                if (element.id == username)
+                    correctPassword = element.password
             }
 
-            if(correctPassword==null){
-                loginUsername.setText("")
-                loginPassword.setText("")
-                Toast.makeText(this, "$username is not registered",Toast.LENGTH_SHORT).show()
-            }else if(correctPassword == password){
-                var intent = Intent(this, MainActivity::class.java).apply {
-                    putExtra("username", username)
+            when(correctPassword) {
+
+                null -> {
+                    binding.loginUsername.setText("")
+                    binding.loginPassword.setText("")
+                    Toast.makeText(this, "$username is not registered", Toast.LENGTH_SHORT).show()
                 }
-                setResult(Activity.RESULT_OK, intent)
-                finish()
-            }else {
-                loginPassword.setText("")
-                Toast.makeText(this, "Incorrect password",Toast.LENGTH_SHORT).show()
+                password -> {
+                    val intent = Intent(this, MainActivity::class.java).apply {
+                        putExtra("username", Json.encodeToString(User(username,password)))
+                    }
+                    setResult(Activity.RESULT_OK, intent)
+                    finish()
+                }
+                else -> {
+                    binding.loginPassword.setText("")
+                    Toast.makeText(this, "Incorrect password", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
+        /*
         fun getPasswordByUser(user:String):String?{
-            for(user in defaultUsers){
-                if(user.id.equals(username))
-                    return user.password
+            for(element in defaultUsers){
+                if(element.id == username)
+                    return element.password
             }
             return null
         }
+         */
     }
 }

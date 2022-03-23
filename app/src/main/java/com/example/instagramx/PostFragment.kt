@@ -7,8 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.instagramx.databinding.FragmentPostBinding
-import kotlinx.android.synthetic.main.fragment_post.*
-import kotlinx.android.synthetic.main.item_post.*
 
 class PostFragment() : Fragment() {
 
@@ -23,12 +21,14 @@ class PostFragment() : Fragment() {
 
         _binding = FragmentPostBinding.inflate(inflater, container, false)
 
-        binding.postShareTxV.setOnClickListener(){
+        binding.postLayoutLocation.setOnClickListener { }
+
+        binding.postShareTxV.setOnClickListener{
             val userUri = Uri.parse("")//----------ERROR!!!!!!!!!
             val postUri = Uri.parse(binding.postImage.toString())//----------ERROR!!!!!!!!!
-            val username =
-            val caption = captionTxt.text.toString()
-            val location = locationTxt.text.toString()
+            val username = SingleLoggedUser.user.id
+            val caption = binding.postCaptionTxt.text.toString()
+            val location = binding.postLocationTxt.text.toString()
 
             val post = Post(userUri, username, postUri, caption, location)
         }
