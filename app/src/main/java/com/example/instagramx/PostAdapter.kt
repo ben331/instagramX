@@ -70,6 +70,5 @@ class PostAdapter : RecyclerView.Adapter<PostView>(), PostView.OnPostDelete {
 
     fun addPost(post: Post){
         posts.add(post)
-        notifyItemInserted(posts.size -1)
     }
 }

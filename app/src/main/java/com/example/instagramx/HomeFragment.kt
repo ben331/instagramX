@@ -29,12 +29,22 @@ class HomeFragment : Fragment() {
         binding.postRecycler.setHasFixedSize(true)
         adapter = PostAdapter()
         binding.postRecycler.adapter = adapter
+        adapter.notifyDataSetChanged()
 
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {
         @JvmStatic
         fun newInstance() = HomeFragment()
+    }
+
+    fun newPost(post: Post) {
+        adapter.addPost(post)
     }
 }

@@ -3,6 +3,7 @@ package com.example.instagramx
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
@@ -10,7 +11,7 @@ import com.example.instagramx.databinding.ActivityMainBinding
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), PostFragment.OnPostListener {
 
     //Fragments
     private lateinit var postFragment:PostFragment
@@ -32,10 +33,14 @@ class MainActivity : AppCompatActivity() {
         homeFragment = HomeFragment.newInstance()
         profileFragment = ProfileFragment.newInstance()
 
+        postFragment.listener = this
+
         binding.navigator.setOnItemSelectedListener { menuItem->
             when(menuItem.itemId) {
-                R.id.postItem ->
+                R.id.postItem ->{
                     showFragment(postFragment)
+                    binding.navigator.visibility = View.GONE
+                }
                 R.id.homeItem ->
                     showFragment(homeFragment)
                 R.id.profileItem->
@@ -70,6 +75,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadHome() {
+        showFragment(homeFragment)
+    }
+
+    override fun newPost(post: Post?) {
+        if(post!=null){
+            homeFragment.newPost(post)//-----------Threads!!!!!!!!!!
+        }
         showFragment(homeFragment)
     }
 }
