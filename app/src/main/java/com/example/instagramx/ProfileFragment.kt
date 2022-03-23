@@ -13,11 +13,28 @@ class ProfileFragment : Fragment() {
     private var _binding:FragmentProfileBinding?=null
     private val binding get() = _binding!!
 
+    var listener: OnDoneChanges?=null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
+
+        binding.profileName.setText(SingleLoggedUser.user?.name)
+        binding.profileUsername.setText(SingleLoggedUser.user?.id)
+        binding.profilePhoto.setImageURI(SingleLoggedUser.user?.photo)
+
+        binding.profileChangeBtn.setOnClickListener{
+
+            listener?.doneChanges(false)
+        }
+
+        binding.profileSaveBtn.setOnClickListener{
+            SingleLoggedUser.user?.name = binding.profileName.text.toString()
+            listener?.doneChanges(true)
+        }
+
         return binding.root
     }
 
@@ -29,5 +46,9 @@ class ProfileFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() = ProfileFragment()
+    }
+
+    interface OnDoneChanges{
+        fun doneChanges(done:Boolean)
     }
 }

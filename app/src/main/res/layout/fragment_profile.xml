@@ -6,7 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <Button
-        android:id="@+id/postBackBtn"
+        android:id="@+id/profileBackBtn"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="5dp"
@@ -36,7 +36,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/profileSaveBtn"
-        app:layout_constraintStart_toEndOf="@+id/postBackBtn"
+        app:layout_constraintStart_toEndOf="@+id/profileBackBtn"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button

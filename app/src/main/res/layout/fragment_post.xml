@@ -6,7 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <Button
-        android:id="@+id/postBackBtn"
+        android:id="@+id/profileBackBtn"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="5dp"
@@ -35,7 +35,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/postShareTxV"
-        app:layout_constraintStart_toEndOf="@+id/postBackBtn"
+        app:layout_constraintStart_toEndOf="@+id/profileBackBtn"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -58,7 +58,7 @@
         android:layout_height="84dp"
         android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postBackBtn"
+        app:layout_constraintTop_toBottomOf="@+id/profileBackBtn"
         tools:srcCompat="@tools:sample/avatars" />
 
     <EditText
@@ -75,7 +75,7 @@
         android:textAlignment="gravity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/postImage"
-        app:layout_constraintTop_toBottomOf="@+id/postBackBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/profileBackBtn" />
 
     <LinearLayout
         android:id="@+id/postLayoutLocation"

@@ -25,16 +25,16 @@ class PostFragment : Fragment() {
         binding.postLayoutLocation.setOnClickListener { }
 
         binding.postShareTxV.setOnClickListener{
-            val username = SingleLoggedUser.user.id
+            val username = SingleLoggedUser.user!!.id
             val caption = binding.postCaptionTxt.text.toString()
             val location = binding.postLocationTxt.text.toString()
-            val post = Post(SingleLoggedUser.user.photo, username, postUri, caption, location)
+            val post = Post(SingleLoggedUser.user!!.photo, username, postUri, caption, location)
             onDestroyView()
             listener?.newPost(post)//------------------------Threads!!!!!!
 
         }
 
-        binding.postBackBtn.setOnClickListener{
+        binding.postShareTxV.setOnClickListener{
             listener?.newPost(null)
         }
         /* Inflate the layout for this fragment */

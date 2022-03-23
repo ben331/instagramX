@@ -8,4 +8,5 @@ class User (id:String, password:String){
   var id:String = id
   var password:String = password
   lateinit var photo:Uri
+  lateinit var name:String
 }

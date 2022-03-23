@@ -3,7 +3,7 @@ package com.example.instagramx
 
 //Singleton
 object SingleLoggedUser {
-    lateinit var user:User
+    var user:User?=null
 }
 
 /*
