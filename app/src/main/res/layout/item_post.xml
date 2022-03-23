@@ -16,25 +16,41 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/userphoto"
+            android:id="@+id/userPhoto"
             android:layout_width="21dp"
             android:layout_height="36dp"
             android:layout_margin="6dp"
             android:layout_weight="1"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <TextView
-            android:id="@+id/postUsername"
-            android:layout_width="292dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="left|center_vertical"
-            android:text="alfa"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/usernameTxt"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:text="Alfa"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/locationTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Location"
+                android:textSize="14sp"
+                android:visibility="gone" />
+        </LinearLayout>
 
         <Button
-            android:id="@+id/postMoreBtn"
+            android:id="@+id/moreBtn"
             android:layout_width="18dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="6dp"
@@ -47,7 +63,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imagePost"
+        android:id="@+id/postImg"
         android:layout_width="0dp"
         android:layout_height="400dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,10 +78,10 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagePost">
+        app:layout_constraintTop_toBottomOf="@+id/postImg">
 
         <Button
-            android:id="@+id/postLikeBtn"
+            android:id="@+id/likeBtn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -82,7 +98,7 @@
             app:iconSize="18dp" />
 
         <Button
-            android:id="@+id/postComentBtn"
+            android:id="@+id/comentBtn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -98,7 +114,7 @@
             app:iconSize="18dp" />
 
         <Button
-            android:id="@+id/postShareBtn"
+            android:id="@+id/shareBtn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="240dp"
@@ -115,7 +131,7 @@
             app:iconSize="18dp" />
 
         <Button
-            android:id="@+id/postSaveBtn"
+            android:id="@+id/saveBtn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -132,20 +148,22 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/postCaption"
+        android:id="@+id/captionTxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:text="Caption"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
-        android:id="@+id/postDateTime"
+        android:id="@+id/dateTimeTxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:text="Hace 1 hora"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postCaption" />
+        app:layout_constraintTop_toBottomOf="@+id/captionTxt" />
 </androidx.constraintlayout.widget.ConstraintLayout>

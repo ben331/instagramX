@@ -6,42 +6,49 @@ import android.os.Bundle
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.instagramx.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private var loggedUsername:String? = null
+    var loggedUser: Unit = SingleLoggedUser.getInstance()
 
     //Fragments
     private lateinit var postFragment:PostFragment
     private lateinit var homeFragment: HomeFragment
     private lateinit var profileFragment: ProfileFragment
 
+    //Binding
+    private var _binding : ActivityMainBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         Thread.sleep(500) //To Show Splash or simulate back operations
         setTheme(R.style.Theme_InstagramX) //Reset Theme to clean SplashScreen
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         postFragment = PostFragment.newInstance()
         homeFragment = HomeFragment.newInstance()
         profileFragment = ProfileFragment.newInstance()
 
-        navigator.setOnItemSelectedListener { menuItem->
-            if(menuItem.itemId==R.id.postItem){
-                showFragment(postFragment)
-            }else if(menuItem.itemId==R.id.homeItem){
-                showFragment(homeFragment)
-            }else{
-                showFragment(profileFragment)
+        binding.navigator.setOnItemSelectedListener { menuItem->
+            when(menuItem.itemId) {
+                R.id.postItem ->
+                    showFragment(postFragment)
+                R.id.homeItem ->
+                    showFragment(homeFragment)
+                R.id.profileItem->
+                    showFragment(profileFragment)
             }
             true
         }
+    }
 
-
+    init{
         //Go to Login or keep in home depending if is first login or not
         if(loggedUsername==null){
-            var intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult(),::onResultLogin)
             launcher.launch(intent)
         }else{

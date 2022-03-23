@@ -6,27 +6,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.example.instagramx.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
-    private lateinit var layoutManager: LinearLayoutManager;
-    private lateinit var adapter: PostAdapter;
+    private lateinit var layoutManager: LinearLayoutManager
+    private lateinit var adapter : PostAdapter
+
+    //Binding
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
 
-        layoutManager = LinearLayoutManager(this)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        postRecycler.layoutManager = layoutManager
-        postRecycler.setHasFixedSize(true)
-
+        layoutManager = LinearLayoutManager(activity)
+        binding.postRecycler.layoutManager = layoutManager
+        binding.postRecycler.setHasFixedSize(true)
         adapter = PostAdapter()
-        postRecycler.adapter = adapter
+        binding.postRecycler.adapter = adapter
+
+        return binding.root
     }
 
     companion object {
