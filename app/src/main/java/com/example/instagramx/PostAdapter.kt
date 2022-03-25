@@ -12,10 +12,6 @@ class PostAdapter : RecyclerView.Adapter<PostView>(), PostView.OnPostDelete {
 
     private var posts = ArrayList<Post>()
 
-    init {
-
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostView {
         val inflater = LayoutInflater.from(parent.context)
         val item = inflater.inflate(R.layout.item_post, parent, false)

@@ -7,7 +7,9 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.example.instagramx.databinding.ActivityMainBinding
+import kotlinx.coroutines.Job
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
@@ -78,9 +80,15 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
 
     override fun newPost(post: Post?) {
         if(post!=null){
-            homeFragment.newPost(post)//-----------Threads!!!!!!!!!!
+            homeFragment.newPost(post)
         }
-        showFragment(homeFragment)
+    }
+
+    override fun loadPost(postingCoroutine: Job) {
+        val loaderView = LoadingViewModel(postingCoroutine)
+        loaderView.dotsLive.observe(this, Observer{
+
+        })
     }
 
     override fun doneChanges(done: Boolean) {

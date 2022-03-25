@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instagramx.databinding.FragmentHomeBinding
+import kotlinx.coroutines.delay
 
 class HomeFragment : Fragment() {
 
@@ -45,6 +46,8 @@ class HomeFragment : Fragment() {
     }
 
     fun newPost(post: Post) {
+        //Upload the post in DataBase (5 seconds)
+
         adapter.addPost(post)
     }
 }

@@ -116,5 +116,16 @@
             app:srcCompat="@drawable/go" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/loadingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Loading"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postLayoutLocation" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
