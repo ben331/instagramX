@@ -23,7 +23,11 @@ class ProfileFragment : Fragment() {
 
         binding.profileName.setText(SingleLoggedUser.user?.name)
         binding.profileUsername.setText(SingleLoggedUser.user?.id)
-        binding.profilePhoto.setImageURI(SingleLoggedUser.user?.photo)
+        val photo = SingleLoggedUser.user?.photo
+        if(photo!=null)
+            binding.profilePhoto.setImageURI(photo)
+        else{
+        }
 
         binding.profileChangeBtn.setOnClickListener{
 

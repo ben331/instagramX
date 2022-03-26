@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.example.instagramx.databinding.ActivityLoginBinding
 import kotlinx.serialization.encodeToString
@@ -26,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
         lateinit var user:User
 
         binding.loginBtn.setOnClickListener {
+            Log.e("Info", "bTN")
             val username = binding.loginUsername.text.toString()
             val password = binding.loginPassword.text.toString()
 
@@ -44,7 +46,8 @@ class LoginActivity : AppCompatActivity() {
                 }
                 password -> {
                     val intent = Intent(this, MainActivity::class.java).apply {
-                        putExtra("username", Json.encodeToString(User(username,password)))
+                        putExtra("username", "$username" )
+                        putExtra("pass", "$password")
                     }
                     setResult(Activity.RESULT_OK, intent)
                     finish()

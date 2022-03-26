@@ -1,8 +1,10 @@
 package com.example.instagramx
 
+import android.Manifest
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -10,8 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.instagramx.databinding.ActivityMainBinding
 import kotlinx.coroutines.Job
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
 
 class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFragment.OnDoneChanges {
 
@@ -25,9 +25,17 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Thread.sleep(500) //To Show Splash or simulate back operations
-        setTheme(R.style.Theme_InstagramX) //Reset Theme to clean SplashScreen
+        //Thread.sleep(500) //To Show Splash or simulate back operations
+        //setTheme(R.style.Theme_InstagramX) //Reset Theme to clean SplashScreen
         super.onCreate(savedInstanceState)
+
+        //Ask permissions
+        requestPermissions(arrayOf(
+            Manifest.permission.CAMERA,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ),1)
+
+        //Bindings
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -48,9 +56,7 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
             }
             true
         }
-    }
 
-    init{
         //Go to Login or keep in home depending if is first login or not
         if(SingleLoggedUser.user == null){
             val intent = Intent(this, LoginActivity::class.java)
@@ -62,9 +68,9 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
     }
 
     private fun onResultLogin(result:ActivityResult) {
-        val json:String? = result.data?.extras?.getString("username")
-        val user = json?.let<String, User?> { Json.decodeFromString(it) }
-        SingleLoggedUser.user = user!!
+        val username:String? = result.data?.extras?.getString("username")
+        val password:String? = result.data?.extras?.getString("pass")
+        SingleLoggedUser.user = User(username!!,password!!)
         loadHome()
     }
 
@@ -94,6 +100,20 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
     override fun doneChanges(done: Boolean) {
         if(done){
             Toast.makeText(this, "Saved changes",3)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if(requestCode==1){
+            for(result in grantResults){
+                if (result==-1)
+                    this.finish(); System.exit(0);
+            }
         }
     }
 }
