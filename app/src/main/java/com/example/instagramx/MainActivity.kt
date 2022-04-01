@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //Thread.sleep(500) //To Show Splash or simulate back operations
-        //setTheme(R.style.Theme_InstagramX) //Reset Theme to clean SplashScreen
         super.onCreate(savedInstanceState)
 
         //Ask permissions
