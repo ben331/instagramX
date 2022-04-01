@@ -21,8 +21,13 @@ class PostAdapter : RecyclerView.Adapter<PostView>(), PostView.OnPostDelete {
     override fun onBindViewHolder(holder: PostView, position: Int) {
         val post = posts[position]
         holder.listener = this
-        holder.userPhoto.setImageURI(post.userphotoURI)
         holder.usernameTxt.text = post.username
+        holder.postImg.setImageResource(R.drawable.profile)
+        if(post.userphotoURI==null){
+            holder.userPhoto.setImageResource(R.drawable.profile)
+        }else{
+            holder.userPhoto.setImageURI(post.userphotoURI)
+        }
         if(post.location!=null && post.location!="") {
             holder.locationTxt.visibility = View.VISIBLE
             holder.locationTxt.text = post.location

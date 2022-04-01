@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    android:layout_height="match_parent">
 
     <Button
         android:id="@+id/profileBackBtn"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
         android:background="#00FFFFFF"
         android:paddingLeft="7dp"
         android:textAlignment="center"
@@ -27,105 +26,78 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:gravity="center"
         android:text="New post"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/postShareTxV"
         app:layout_constraintStart_toEndOf="@+id/profileBackBtn"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <Button
         android:id="@+id/postShareTxV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
         android:text="Share"
         android:textAlignment="center"
         android:textColor="@color/light_blue"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/postImage"
-        android:layout_width="wrap_content"
+        android:layout_width="84dp"
         android:layout_height="84dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileBackBtn"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/profile" />
 
     <EditText
         android:id="@+id/postCaptionTxt"
         android:layout_width="286dp"
         android:layout_height="84dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="53dp"
         android:layout_marginEnd="5dp"
         android:ems="10"
         android:gravity="top|left"
         android:hint="Write a caption..."
         android:inputType="textLongMessage"
         android:textAlignment="gravity"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/postImage"
-        app:layout_constraintTop_toBottomOf="@+id/profileBackBtn" />
-
-    <LinearLayout
-        android:id="@+id/postLayoutLocation"
-        android:layout_width="428dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postImage">
-
-        <TextView
-            android:layout_width="46dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:paddingLeft="15dp"
-            android:text="Add location"
-            android:textAlignment="viewStart"
-            android:textSize="18dp" />
-
-        <TextView
-            android:id="@+id/postLocationTxt"
-            android:layout_width="166dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:maxWidth="10dp"
-            android:minWidth="0dp"
-            android:paddingLeft="30dp"
-            app:srcCompat="@drawable/go" />
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/postTitle" />
 
     <TextView
         android:id="@+id/loadingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         android:text="Loading"
-        android:textSize="24sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postLayoutLocation" />
+        tools:layout_editor_absoluteY="319dp" />
+
+    <Spinner
+        android:id="@+id/postLocationSp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postImage" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

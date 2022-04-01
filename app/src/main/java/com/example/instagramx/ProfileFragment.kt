@@ -26,8 +26,7 @@ class ProfileFragment : Fragment() {
         val photo = SingleLoggedUser.user?.photo
         if(photo!=null)
             binding.profilePhoto.setImageURI(photo)
-        else{
-        }
+
 
         binding.profileChangeBtn.setOnClickListener{
 

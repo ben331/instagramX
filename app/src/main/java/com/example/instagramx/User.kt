@@ -7,6 +7,6 @@ import kotlinx.serialization.Serializable
 class User (id:String, password:String){
   var id:String = id
   var password:String = password
-  lateinit var photo:Uri
+  var photo:Uri? = null
   var name = ""
 }
