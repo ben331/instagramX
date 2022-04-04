@@ -1,5 +1,6 @@
 package com.example.instagramx
 
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -15,9 +16,14 @@ class PostFragment : Fragment() {
     private var _binding : FragmentPostBinding? = null
     private val binding get() = _binding!!
 
-    private var postUri:Uri?=null
-    var listener: OnPostListener?=null
-    var postingCoroutine : Job?=null
+    //Status of postFragment: Uri from ImageCapture
+    lateinit var bitmap : Bitmap
+    lateinit var postUri: Uri
+
+    //Listener
+    lateinit var listener: OnPostListener
+
+    //var postingCoroutine : Job?=null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,14 +31,15 @@ class PostFragment : Fragment() {
     ): View? {
 
         _binding = FragmentPostBinding.inflate(inflater, container, false)
+        binding.postImage.setImageBitmap(bitmap)
 
-        binding.postShareTxV.setOnClickListener{
+        binding.postShareBtn.setOnClickListener{
             val caption = binding.postCaptionTxt.text.toString()
             //val location = binding.postLocationSp.selectedItem.toString()
             val username = SingleLoggedUser.user!!.id
             val post = Post(SingleLoggedUser.user!!.photo, username, postUri, caption, "location")
 
-            listener?.newPost(post)
+            listener.newPost(post)
             /*
             postingCoroutine = lifecycleScope.launch(Dispatchers.IO){
                 listener?.newPost(post)
@@ -44,8 +51,8 @@ class PostFragment : Fragment() {
             */
         }
 
-        binding.postShareTxV.setOnClickListener{
-            listener?.newPost(null)
+        binding.postShareBtn.setOnClickListener{
+            listener.newPost(null)
         }
         /* Inflate the layout for this fragment */
         return inflater.inflate(R.layout.fragment_post, container, false)

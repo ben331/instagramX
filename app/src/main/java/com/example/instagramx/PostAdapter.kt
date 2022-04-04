@@ -10,7 +10,9 @@ import kotlin.math.ceil
 
 class PostAdapter : RecyclerView.Adapter<PostView>(), PostView.OnPostDelete {
 
+    //Status of RecyclerView - Posts
     private var posts = ArrayList<Post>()
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostView {
         val inflater = LayoutInflater.from(parent.context)
@@ -20,9 +22,13 @@ class PostAdapter : RecyclerView.Adapter<PostView>(), PostView.OnPostDelete {
 
     override fun onBindViewHolder(holder: PostView, position: Int) {
         val post = posts[position]
+
+        //Subscription -> PostAdapter observes each item to remove it later. Observer Pattern
         holder.listener = this
+
+        //Bind View Holder
         holder.usernameTxt.text = post.username
-        holder.postImg.setImageResource(R.drawable.profile)
+        holder.postImg.setImageURI(post.image)
         if(post.userphotoURI==null){
             holder.userPhoto.setImageResource(R.drawable.profile)
         }else{
@@ -55,7 +61,7 @@ class PostAdapter : RecyclerView.Adapter<PostView>(), PostView.OnPostDelete {
             val days = ceil(difference/86400)
             return "$days minute(s) ago"
         }else {
-            return Calendar.getInstance().toString()
+            return Calendar.getInstance().time.toString()
         }
     }
 

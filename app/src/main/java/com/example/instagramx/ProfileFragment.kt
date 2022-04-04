@@ -13,7 +13,7 @@ class ProfileFragment : Fragment() {
     private var _binding:FragmentProfileBinding?=null
     private val binding get() = _binding!!
 
-    var listener: OnDoneChanges?=null
+    lateinit var listener: OnDoneChanges
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,13 +29,12 @@ class ProfileFragment : Fragment() {
 
 
         binding.profileChangeBtn.setOnClickListener{
-
-            listener?.doneChanges(false)
+            
         }
 
         binding.profileSaveBtn.setOnClickListener{
-            SingleLoggedUser.user?.name = binding.profileName.text.toString()
-            listener?.doneChanges(true)
+            SingleLoggedUser.user!!.name = binding.profileName.text.toString()
+            listener.doneChanges(true)
         }
 
         return binding.root

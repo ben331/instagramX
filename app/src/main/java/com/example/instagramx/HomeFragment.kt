@@ -1,18 +1,17 @@
 package com.example.instagramx
 
 import android.os.Bundle
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instagramx.databinding.FragmentHomeBinding
-import kotlinx.coroutines.delay
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment () {
 
+    //RecyclerView Elements
     private lateinit var layoutManager: LinearLayoutManager
-    private lateinit var adapter : PostAdapter
+    lateinit var adapter : PostAdapter
 
     //Binding
     private var _binding: FragmentHomeBinding? = null
@@ -28,12 +27,12 @@ class HomeFragment : Fragment() {
         layoutManager = LinearLayoutManager(activity)
         binding.postRecycler.layoutManager = layoutManager
         binding.postRecycler.setHasFixedSize(true)
-        adapter = PostAdapter()
         binding.postRecycler.adapter = adapter
         adapter.notifyDataSetChanged()
 
         return binding.root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -46,8 +45,6 @@ class HomeFragment : Fragment() {
     }
 
     fun newPost(post: Post) {
-        //Upload the post in DataBase (5 seconds)
-
         adapter.addPost(post)
     }
 }

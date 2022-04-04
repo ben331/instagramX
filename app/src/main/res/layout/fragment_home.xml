@@ -5,58 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/homeHeaderLayout"
-        android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:gravity="center|top"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/homeTitle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="16dp"
-            android:text="𝓘𝓷𝓼𝓽𝓪𝓰𝓻𝓪𝓶"
-            android:textSize="38dp" />
-
-        <Button
-            android:id="@+id/homeUploadBtn"
-            android:layout_width="220dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="0dp"
-            app:icon="@drawable/upload"
-            app:iconGravity="textStart"
-            app:iconSize="30dp" />
-
-        <Button
-            android:id="@+id/homeActivityBtn"
-            android:layout_width="220dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="0dp"
-            app:icon="@drawable/heart"
-            app:iconGravity="textStart"
-            app:iconSize="30dp" />
-
-        <Button
-            android:id="@+id/homeMessengerBtn"
-            android:layout_width="220dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="0dp"
-            app:icon="@drawable/messenger"
-            app:iconGravity="textStart"
-            app:iconSize="25dp" />
-
-    </LinearLayout>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/postRecycler"
         android:layout_width="0dp"
@@ -64,5 +12,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeHeaderLayout" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
