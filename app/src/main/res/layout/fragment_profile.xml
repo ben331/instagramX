@@ -9,10 +9,9 @@
         android:id="@+id/profilePhoto"
         android:layout_width="84dp"
         android:layout_height="88dp"
-        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteY="80dp"
         tools:srcCompat="@drawable/profile" />
 
     <Button
@@ -80,4 +79,41 @@
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileName" />
+
+    <Button
+        android:id="@+id/profileBackBtn"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        app:icon="@drawable/back"
+        app:iconGravity="textStart"
+        app:iconSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/profileSaveBtn"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        app:icon="@drawable/done"
+        app:iconGravity="textStart"
+        app:iconSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/profileTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="4dp"
+        android:padding="6dp"
+        android:text="Edit Profile"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/profileSaveBtn"
+        app:layout_constraintStart_toEndOf="@+id/profileBackBtn"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

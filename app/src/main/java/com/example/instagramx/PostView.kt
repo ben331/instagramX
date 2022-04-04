@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class PostView(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-    lateinit var post:Post
+    private lateinit var post:Post
 
     var listener : OnPostDelete? = null
     var userPhoto : ImageView = itemView.findViewById(R.id.userPhoto)
@@ -17,10 +17,10 @@ class PostView(itemView: View) : RecyclerView.ViewHolder(itemView){
     var captionTxt : TextView = itemView.findViewById(R.id.captionTxt)
     var locationTxt : TextView = itemView.findViewById(R.id.locationTxt)
     var dateTimeTxt : TextView = itemView.findViewById(R.id.dateTimeTxt)
-    var moreBtn : Button = itemView.findViewById(R.id.moreBtn)
+    private var moreBtn : Button = itemView.findViewById(R.id.moreBtn)
 
     init{
-        moreBtn.setOnClickListener(){
+        moreBtn.setOnClickListener{
             listener?.deletePost(post)
         }
     }

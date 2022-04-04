@@ -10,9 +10,9 @@
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backBtn"
         tools:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <EditText
@@ -20,7 +20,7 @@
         android:layout_width="286dp"
         android:layout_height="84dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:ems="10"
         android:gravity="top|left"
@@ -30,7 +30,7 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/postImage"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/postShareBtn" />
 
     <TextView
         android:id="@+id/loadingText"
@@ -54,6 +54,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postImage" />
+
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:icon="@drawable/back"
+        app:iconGravity="textStart"
+        app:iconSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/postTitle"
+        android:layout_width="195dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:gravity="center"
+        android:padding="6dp"
+        android:text="New Post"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/postShareBtn"
+        app:layout_constraintStart_toEndOf="@+id/backBtn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/postShareBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Share"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="312dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
