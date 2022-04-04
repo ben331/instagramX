@@ -1,6 +1,7 @@
 package com.example.instagramx
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -17,6 +18,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.example.instagramx.databinding.ActivityMainBinding
+import com.google.gson.Gson
 import kotlinx.coroutines.Job
 import java.io.File
 import java.util.*
@@ -232,5 +234,29 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
             showFragment(postFragment)
         }
     }
-    //----------------------------------------------------------------------------------------------
+    // Serialization----------------------------------------------------------------------------------------------
+
+    override fun onPause() {
+        super.onPause()
+        val posts = Gson().toJson(PostsWrapper(homeFragment.adapter.posts))
+        val currentUser = Gson().toJson(SingleLoggedUser.user)
+        val preferences = getPreferences(Context.MODE_PRIVATE)
+        preferences.edit()
+            .putString("posts",posts)
+            .putString("currentUser",currentUser)
+            .apply()
+    }
+
+    override fun onResume(){
+        super.onResume()
+        val preferences = getPreferences(Context.MODE_PRIVATE)
+        val currentUser = preferences.getString("currentUser","NO_DATA")
+        val posts = preferences.getString("posts","NO_DATA")
+        if(posts!="NO_DATA"){
+            homeFragment.adapter.posts = Gson().fromJson(posts,PostsWrapper::class.java).posts
+        }
+        if(currentUser!="NO_DATA"){
+            SingleLoggedUser.user = Gson().fromJson(currentUser, User::class.java)
+        }
+    }
 }

@@ -11,7 +11,7 @@ import kotlin.math.ceil
 class PostAdapter : RecyclerView.Adapter<PostView>(), PostView.OnPostDelete {
 
     //Status of RecyclerView - Posts
-    private var posts = ArrayList<Post>()
+    var posts = ArrayList<Post>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostView {
