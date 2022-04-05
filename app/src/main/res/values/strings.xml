@@ -1,7 +1,7 @@
 <resources>
 
     //Login--------------------------------------------------
-    <string name="app_name">𝓘𝓷𝓼𝓽𝓪𝓰𝓻𝓪𝓶</string>
+    <string name="app_name">InstagramX</string>
     <string name="login_action">Login</string>
 
     //New Post--------------------------------------------------
