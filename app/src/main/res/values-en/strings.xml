@@ -1,0 +1,20 @@
+<resources>
+
+    //Login--------------------------------------------------
+    <string name="app_name">𝓘𝓷𝓼𝓽𝓪𝓰𝓻𝓪𝓶</string>
+    <string name="login_action">Iniciar sesión</string>
+
+    //New Post--------------------------------------------------
+    <string name="post_title">Nueva publicación</string>
+    <string name="post_action_share">Subir</string>
+    <string name="post_hint_caption">Escribe una descripción...</string>
+    <string name="post_loading">Cargando</string>
+
+
+    //Profile--------------------------------------------------
+    <string name="profile_title">Editar perfil</string>
+    <string name="profile_action_change_photo">Cambiar foto de perfil</string>
+    <string name="profile_nameTxt">Nombre</string>
+    <string name="profile_usernameTxt">Usuario</string>
+
+</resources>

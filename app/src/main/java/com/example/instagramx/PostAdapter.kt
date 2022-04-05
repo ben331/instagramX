@@ -55,11 +55,11 @@ class PostAdapter : RecyclerView.Adapter<PostView>(), PostView.OnPostDelete {
         }
         else if(difference<86399) {//Between 1 hour and 1 day
             val hours = ceil(difference/3600)
-            return "$hours minute(s) ago"
+            return "$hours hours(s) ago"
         }
         else if(difference<2592000) {//Between 1 day and 1 month
             val days = ceil(difference/86400)
-            return "$days minute(s) ago"
+            return "$days days(s) ago"
         }else {
             return Calendar.getInstance().time.toString()
         }

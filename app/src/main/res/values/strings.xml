@@ -1,14 +1,20 @@
 <resources>
-    <string name="app_name">instagramX</string>
-    <string name="title_activity_login">login</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //Login--------------------------------------------------
+    <string name="app_name">𝓘𝓷𝓼𝓽𝓪𝓰𝓻𝓪𝓶</string>
+    <string name="login_action">Login</string>
+
+    //New Post--------------------------------------------------
+    <string name="post_title">New Post</string>
+    <string name="post_action_share">Share</string>
+    <string name="post_hint_caption">Write a caption...</string>
+    <string name="post_loading">Loading</string>
+
+
+    //Profile--------------------------------------------------
+    <string name="profile_title">Edit Profile</string>
+    <string name="profile_action_change_photo">Change profile photo</string>
+    <string name="profile_nameTxt">Name</string>
+    <string name="profile_usernameTxt">Username</string>
+
 </resources>
