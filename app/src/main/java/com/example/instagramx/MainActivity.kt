@@ -47,7 +47,6 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         //Bindings
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.include.homeToolBar)
 
         //Instance fragments
         postFragment = PostFragment.newInstance()
@@ -66,11 +65,11 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
                 R.id.postItem ->
                     openCamara()
                 R.id.homeItem -> {
-                    binding.include.homeToolBar.visibility = View.VISIBLE
+                    binding.toolbar.visibility = View.VISIBLE
                     showFragment(homeFragment)
                 }
                 R.id.profileItem -> {
-                    binding.include.homeToolBar.visibility = View.GONE
+                    binding.toolbar.visibility = View.GONE
                     showFragment(profileFragment)
                 }
             }
@@ -116,7 +115,7 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
             }
             R.id.media_action -> {
 
-                showPopup(binding.include.homeToolBar.findViewById(R.id.media_action))
+                showPopup(binding.toolbar.findViewById(R.id.media_action))
                 return true
             }
         }
@@ -164,7 +163,7 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         if (result.resultCode == RESULT_OK) {
             postFragment.bitmap = result.data?.extras?.get("data") as Bitmap
             postFragment.postUri = uri
-            binding.include.homeToolBar.visibility = View.GONE
+            binding.toolbar.visibility = View.GONE
             showFragment(postFragment)
         } else if (result.resultCode == RESULT_CANCELED) {
             showFragment(homeFragment)
@@ -230,7 +229,7 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         val uriImage = result.data?.data
         uriImage.let{
             postFragment.postUri = uri
-            binding.include.homeToolBar.visibility = View.GONE
+            binding.toolbar.visibility = View.GONE
             showFragment(postFragment)
         }
     }
