@@ -14,7 +14,15 @@
     //Profile--------------------------------------------------
     <string name="profile_title">Edit Profile</string>
     <string name="profile_action_change_photo">Change profile photo</string>
+    <string name="profile_action_logout">Logout</string>
     <string name="profile_nameTxt">Name</string>
     <string name="profile_usernameTxt">Username</string>
 
+    //Menus
+    <string name="option_gallery">Gallery</string>
+    <string name="option_camera">Camera</string>
+
+    <string name="option_post">Post</string>
+    <string name="option_home">Home</string>
+    <string name="option_profile">Profile</string>
 </resources>

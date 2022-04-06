@@ -29,10 +29,10 @@
         </activity>
 
         <provider
-            android:authorities="com.example.instagramX"
+            android:authorities="com.example.instagramx"
             android:name="androidx.core.content.FileProvider"
             android:exported="false"
-            android:garantUriPermissions="true">
+            android:grantUriPermissions="true">
 
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/paths"/>
         </provider>

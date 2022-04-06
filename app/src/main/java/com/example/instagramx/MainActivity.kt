@@ -8,6 +8,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -47,6 +48,7 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         //Bindings
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
 
         //Instance fragments
         postFragment = PostFragment.newInstance()
@@ -62,8 +64,17 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         //Define function of navigator button
         binding.navigator.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.postItem ->
+                R.id.postItem ->{
+                    requestPermissions(
+                        arrayOf(
+                            Manifest.permission.CAMERA,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.READ_EXTERNAL_STORAGE
+                        ),
+                        1
+                    )
                     openCamara()
+                }
                 R.id.homeItem -> {
                     binding.toolbar.visibility = View.VISIBLE
                     showFragment(homeFragment)
@@ -76,15 +87,6 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
             true
         }
 
-        //Ask permissions
-        requestPermissions(
-            arrayOf(
-                Manifest.permission.CAMERA,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            ), 1
-        )
-
         //Go to Login or keep in home depending if is first login or not
         if (SingleLoggedUser.user == null) {
             val intent = Intent(this, LoginActivity::class.java)
@@ -95,6 +97,22 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
             launcher.launch(intent)
         } else {
             loadHome()
+        }
+    }
+
+    //Result after ask for permissions
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 1) {
+            for (result in grantResults) {
+                if (result == -1)
+                    Log.e("close", "close")
+                   this.finish(); exitProcess(0)
+            }
         }
     }
 
@@ -146,17 +164,18 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         popup.show()
     }
 
+    private val cameraLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult(),
+        ::onCameraResult
+    )
+
     private fun openCamara() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         val fileName = "photo${Calendar.getInstance().time}.png"
         file = File("${getExternalFilesDir(null)}/${fileName}")
         uri = FileProvider.getUriForFile(this, packageName, file!!)
         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
-        val launcher = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult(),
-            ::onCameraResult
-        )
-        launcher.launch(intent)
+        cameraLauncher.launch(intent)
     }
 
     private fun onCameraResult(result: ActivityResult) {
@@ -167,21 +186,6 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
             showFragment(postFragment)
         } else if (result.resultCode == RESULT_CANCELED) {
             showFragment(homeFragment)
-        }
-    }
-
-    //Result after ask for permissions
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == 1) {
-            for (result in grantResults) {
-                if (result == -1)
-                    this.finish(); exitProcess(0)
-            }
         }
     }
 
@@ -205,18 +209,28 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         if (done) {
             Toast.makeText(this, "Saved changes", Toast.LENGTH_SHORT).show()
         }
+        showFragment(homeFragment)
+        binding.toolbar.visibility = View.VISIBLE
     }
+
+    private val galleryLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult(),
+        ::onGalleryResult
+    )
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         when (item!!.itemId) {
             R.id.gallery_action -> {
+                requestPermissions(
+                    arrayOf(
+                        Manifest.permission.CAMERA,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE
+                    ), 1
+                )
                 val intent = Intent(Intent.ACTION_GET_CONTENT)
                 intent.type = "image/*"
-                val launcher = registerForActivityResult(
-                    ActivityResultContracts.StartActivityForResult(),
-                    ::onGalleryResult
-                )
-                launcher.launch(intent)
+                galleryLauncher.launch(intent)
             }
             R.id.camera_action -> {
                 openCamara()

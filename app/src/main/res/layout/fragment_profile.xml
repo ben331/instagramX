@@ -16,6 +16,7 @@
 
     <Button
         android:id="@+id/profileChangeBtn"
+        style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -82,6 +83,7 @@
 
     <Button
         android:id="@+id/profileBackBtn"
+        style="@style/ButtonTransStyle"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
@@ -93,6 +95,7 @@
 
     <Button
         android:id="@+id/profileSaveBtn"
+        style="@style/ButtonTransStyle"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="6dp"
@@ -112,8 +115,19 @@
         android:padding="6dp"
         android:text="@string/profile_title"
         android:textColor="@color/black"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/profileSaveBtn"
         app:layout_constraintStart_toEndOf="@+id/profileBackBtn"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/profile_action_logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileUsername" />
 </androidx.constraintlayout.widget.ConstraintLayout>

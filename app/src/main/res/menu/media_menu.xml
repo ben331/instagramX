@@ -4,12 +4,12 @@
 
     <item
         android:id="@+id/gallery_action"
-        app:showAsAction="never"
         android:icon="@drawable/gallery"
-        android:title="Gallery"/>
+        android:title="@string/option_gallery"
+        app:showAsAction="never" />
     <item
         android:id="@+id/camera_action"
-        app:showAsAction="never"
-        android:title="Camera"
-        android:icon="@drawable/camera"/>
+        android:icon="@drawable/camera"
+        android:title="@string/option_camera"
+        app:showAsAction="never" />
 </menu>

@@ -1,10 +1,13 @@
 package com.example.instagramx
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.instagramx.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
@@ -29,7 +32,13 @@ class ProfileFragment : Fragment() {
 
 
         binding.profileChangeBtn.setOnClickListener{
-            
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "image/*"
+            val launcher = registerForActivityResult(
+                ActivityResultContracts.StartActivityForResult(),
+                ::onGalleryResult
+            )
+            launcher.launch(intent)
         }
 
         binding.profileSaveBtn.setOnClickListener{
@@ -37,7 +46,20 @@ class ProfileFragment : Fragment() {
             listener.doneChanges(true)
         }
 
+        binding.logoutBtn.setOnClickListener{
+            SingleLoggedUser.user = null
+            listener.doneChanges(false)
+        }
+
         return binding.root
+    }
+
+    private fun onGalleryResult(result: ActivityResult){
+        val uriImage = result.data?.data
+        uriImage.let{
+            binding.profilePhoto.setImageURI(it)
+            SingleLoggedUser.user?.photo = uriImage
+        }
     }
 
     override fun onDestroyView() {
