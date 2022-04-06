@@ -18,6 +18,11 @@ class ProfileFragment : Fragment() {
 
     lateinit var listener: OnDoneChanges
 
+    private val launcher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult(),
+        ::onGalleryResult
+    )
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,14 +35,10 @@ class ProfileFragment : Fragment() {
         if(photo!=null)
             binding.profilePhoto.setImageURI(photo)
 
-
         binding.profileChangeBtn.setOnClickListener{
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "image/*"
-            val launcher = registerForActivityResult(
-                ActivityResultContracts.StartActivityForResult(),
-                ::onGalleryResult
-            )
+
             launcher.launch(intent)
         }
 

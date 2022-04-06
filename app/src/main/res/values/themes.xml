@@ -18,7 +18,9 @@
 
     //App_Name------------------------------------------------------------------------------
     <style name="AppName">
-
+        <item name="android:fontFamily">@font/billabong</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:gravity">center_vertical</item>
     </style>
 
     //Buttons------------------------------------------------------------------------------

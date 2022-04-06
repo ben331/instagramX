@@ -1,9 +1,11 @@
 package com.example.instagramx
 
 import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -41,6 +43,9 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
     private var file: File? = null
     private lateinit var uri: Uri
 
+    //Vars
+    private var havePermissions = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         //Thread.sleep(500) //To Show Splash or simulate back operations
         super.onCreate(savedInstanceState)
@@ -65,14 +70,6 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         binding.navigator.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.postItem ->{
-                    requestPermissions(
-                        arrayOf(
-                            Manifest.permission.CAMERA,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                            Manifest.permission.READ_EXTERNAL_STORAGE
-                        ),
-                        1
-                    )
                     openCamara()
                 }
                 R.id.homeItem -> {
@@ -109,10 +106,11 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 1) {
             for (result in grantResults) {
-                if (result == -1)
-                    Log.e("close", "close")
-                   this.finish(); exitProcess(0)
+                if (result == -1){
+                    this.finish(); exitProcess(0)
+                }
             }
+            havePermissions = true
         }
     }
 
@@ -170,17 +168,28 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
     )
 
     private fun openCamara() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        val fileName = "photo${Calendar.getInstance().time}.png"
-        file = File("${getExternalFilesDir(null)}/${fileName}")
-        uri = FileProvider.getUriForFile(this, packageName, file!!)
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
-        cameraLauncher.launch(intent)
+        if(havePermissions){
+            requestPermissions(
+                arrayOf(
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ),
+                1
+            )
+        }else{
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            val fileName = "photo${Calendar.getInstance().time}.png"
+            file = File("${getExternalFilesDir(null)}/${fileName}")
+            uri = FileProvider.getUriForFile(this, packageName, file!!)
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
+            cameraLauncher.launch(intent)
+        }
     }
 
     private fun onCameraResult(result: ActivityResult) {
         if (result.resultCode == RESULT_OK) {
-            postFragment.bitmap = result.data?.extras?.get("data") as Bitmap
+            postFragment.bitmap = BitmapFactory.decodeFile(file?.path)
             postFragment.postUri = uri
             binding.toolbar.visibility = View.GONE
             showFragment(postFragment)
@@ -221,16 +230,19 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         when (item!!.itemId) {
             R.id.gallery_action -> {
-                requestPermissions(
-                    arrayOf(
-                        Manifest.permission.CAMERA,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.READ_EXTERNAL_STORAGE
-                    ), 1
-                )
-                val intent = Intent(Intent.ACTION_GET_CONTENT)
-                intent.type = "image/*"
-                galleryLauncher.launch(intent)
+                if(havePermissions){
+                    val intent = Intent(Intent.ACTION_GET_CONTENT)
+                    intent.type = "image/*"
+                    galleryLauncher.launch(intent)
+                }else{
+                    requestPermissions(
+                        arrayOf(
+                            Manifest.permission.CAMERA,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.READ_EXTERNAL_STORAGE
+                        ), 1
+                    )
+                }
             }
             R.id.camera_action -> {
                 openCamara()
@@ -240,11 +252,13 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
     }
 
     private fun onGalleryResult(result: ActivityResult) {
-        val uriImage = result.data?.data
-        uriImage.let{
-            postFragment.postUri = uri
-            binding.toolbar.visibility = View.GONE
-            showFragment(postFragment)
+        if(result.resultCode==Activity.RESULT_OK){
+            val uriImage = result.data?.data
+            uriImage.let{
+                postFragment.postUri = uriImage
+                binding.toolbar.visibility = View.GONE
+                showFragment(postFragment)
+            }
         }
     }
     // Serialization----------------------------------------------------------------------------------------------
@@ -257,6 +271,7 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         preferences.edit()
             .putString("posts",posts)
             .putString("currentUser",currentUser)
+            .putBoolean("permissions",havePermissions)
             .apply()
     }
 
@@ -265,6 +280,7 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         val preferences = getPreferences(Context.MODE_PRIVATE)
         val currentUser = preferences.getString("currentUser","NO_DATA")
         val posts = preferences.getString("posts","NO_DATA")
+        havePermissions = preferences.getBoolean("permissions",false)
         if(posts!="NO_DATA"){
             homeFragment.adapter.posts = Gson().fromJson(posts,PostsWrapper::class.java).posts
         }
