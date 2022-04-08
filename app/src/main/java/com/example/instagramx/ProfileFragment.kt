@@ -45,6 +45,10 @@ class ProfileFragment : Fragment() {
             listener.doneChanges(true)
         }
 
+        binding.profileBackBtn.setOnClickListener{
+            listener.doneChanges(false)
+        }
+
         binding.logoutBtn.setOnClickListener{
             listener.logout()
         }
