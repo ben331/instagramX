@@ -32,13 +32,11 @@ class ProfileFragment : Fragment() {
         binding.profileName.setText(SingleLoggedUser.user?.name)
         binding.profileUsername.setText(SingleLoggedUser.user?.id)
         val photo = SingleLoggedUser.user?.photo
-        if(photo!=null)
-            binding.profilePhoto.setImageURI(photo)
+        if(photo!=null) binding.profilePhoto.setImageURI(photo)
 
         binding.profileChangeBtn.setOnClickListener{
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "image/*"
-
             launcher.launch(intent)
         }
 
@@ -48,8 +46,7 @@ class ProfileFragment : Fragment() {
         }
 
         binding.logoutBtn.setOnClickListener{
-            SingleLoggedUser.user = null
-            listener.doneChanges(false)
+            listener.logout()
         }
 
         return binding.root
@@ -57,10 +54,8 @@ class ProfileFragment : Fragment() {
 
     private fun onGalleryResult(result: ActivityResult){
         val uriImage = result.data?.data
-        uriImage.let{
-            binding.profilePhoto.setImageURI(it)
-            SingleLoggedUser.user?.photo = uriImage
-        }
+        binding.profilePhoto.setImageURI(uriImage!!)
+        SingleLoggedUser.user?.photo = uriImage
     }
 
     override fun onDestroyView() {
@@ -75,5 +70,6 @@ class ProfileFragment : Fragment() {
 
     interface OnDoneChanges{
         fun doneChanges(done:Boolean)
+        fun logout()
     }
 }

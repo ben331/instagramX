@@ -51,10 +51,8 @@ class LoginActivity : AppCompatActivity() {
                 }
                 //Correct password
                 password -> {
-                    val intent = Intent(this, MainActivity::class.java).apply {
-                        putExtra("username", username)
-                        putExtra("pass", password)
-                    }
+                    SingleLoggedUser.user = User(username, password)
+                    val intent = Intent(this, MainActivity::class.java)
                     setResult(Activity.RESULT_OK, intent)
                     finish()
                 }

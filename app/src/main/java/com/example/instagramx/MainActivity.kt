@@ -4,13 +4,11 @@ import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -25,10 +23,15 @@ import com.google.gson.Gson
 import kotlinx.coroutines.Job
 import java.io.File
 import java.util.*
-import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFragment.OnDoneChanges, MenuItem.OnMenuItemClickListener,
     PopupMenu.OnMenuItemClickListener {
+
+    //Constants
+    companion object{
+        const val CAMERA_INTENT:Int = 1
+        const val GALLERY_INTENT:Int = 1
+    }
 
     //Fragments
     private lateinit var postFragment: PostFragment
@@ -84,17 +87,32 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
             true
         }
 
-        //Go to Login or keep in home depending if is first login or not
-        if (SingleLoggedUser.user == null) {
-            val intent = Intent(this, LoginActivity::class.java)
-            val launcher = registerForActivityResult(
-                ActivityResultContracts.StartActivityForResult(),
-                ::onResultLogin
-            )
-            launcher.launch(intent)
-        } else {
-            loadHome()
+        //Read User
+        val preferences = getPreferences(Context.MODE_PRIVATE)
+        val currentUser = preferences.getString("currentUser","NO_DATA")
+        havePermissions = preferences.getBoolean("permissions",false)
+        if(currentUser!="NO_DATA"){
+            SingleLoggedUser.user = Gson().fromJson(currentUser, User::class.java)
         }
+
+        //Go to Login or keep in home depending if is first login or not
+        if (SingleLoggedUser.user == null) login() else loadHome()
+    }
+
+    private fun login(){
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun requestPermissions(constant: Int){
+        requestPermissions(
+            arrayOf(
+                Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ),
+            constant
+        )
     }
 
     //Result after ask for permissions
@@ -104,13 +122,16 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == 1) {
-            for (result in grantResults) {
-                if (result == -1){
-                    this.finish(); exitProcess(0)
-                }
+        havePermissions = true
+        for (result in grantResults) {
+            havePermissions = havePermissions && (result!=-1)
+        }
+        if(havePermissions){
+            if (requestCode == CAMERA_INTENT) {
+                openCamara()
+            }else{
+                openGallery()
             }
-            havePermissions = true
         }
     }
 
@@ -138,13 +159,6 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         return super.onOptionsItemSelected(menu)
     }
 
-    private fun onResultLogin(result: ActivityResult) {
-        val username: String? = result.data?.extras?.getString("username")
-        val password: String? = result.data?.extras?.getString("pass")
-        SingleLoggedUser.user = User(username!!, password!!)
-        loadHome()
-    }
-
     private fun loadHome() {
         showFragment(homeFragment)
     }
@@ -169,21 +183,14 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
 
     private fun openCamara() {
         if(havePermissions){
-            requestPermissions(
-                arrayOf(
-                    Manifest.permission.CAMERA,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    Manifest.permission.READ_EXTERNAL_STORAGE
-                ),
-                1
-            )
-        }else{
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             val fileName = "photo${Calendar.getInstance().time}.png"
             file = File("${getExternalFilesDir(null)}/${fileName}")
             uri = FileProvider.getUriForFile(this, packageName, file!!)
             intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
             cameraLauncher.launch(intent)
+        }else{
+            requestPermissions(CAMERA_INTENT)
         }
     }
 
@@ -227,26 +234,20 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         ::onGalleryResult
     )
 
+    private fun openGallery(){
+        if(havePermissions){
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "image/*"
+            galleryLauncher.launch(intent)
+        }else{
+            requestPermissions(GALLERY_INTENT)
+        }
+    }
+
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         when (item!!.itemId) {
-            R.id.gallery_action -> {
-                if(havePermissions){
-                    val intent = Intent(Intent.ACTION_GET_CONTENT)
-                    intent.type = "image/*"
-                    galleryLauncher.launch(intent)
-                }else{
-                    requestPermissions(
-                        arrayOf(
-                            Manifest.permission.CAMERA,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                            Manifest.permission.READ_EXTERNAL_STORAGE
-                        ), 1
-                    )
-                }
-            }
-            R.id.camera_action -> {
-                openCamara()
-            }
+            R.id.gallery_action -> openGallery()
+            R.id.camera_action -> openCamara()
         }
         return true
     }
@@ -277,6 +278,8 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
 
     override fun onResume(){
         super.onResume()
+
+        //Read users and posts
         val preferences = getPreferences(Context.MODE_PRIVATE)
         val currentUser = preferences.getString("currentUser","NO_DATA")
         val posts = preferences.getString("posts","NO_DATA")
@@ -287,5 +290,11 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         if(currentUser!="NO_DATA"){
             SingleLoggedUser.user = Gson().fromJson(currentUser, User::class.java)
         }
+    }
+
+    override fun logout() {
+        SingleLoggedUser.user = null
+        showFragment(homeFragment)
+        login()
     }
 }
