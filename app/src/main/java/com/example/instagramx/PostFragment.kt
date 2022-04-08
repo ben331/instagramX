@@ -8,9 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.example.instagramx.databinding.FragmentPostBinding
-import kotlinx.coroutines.Job
 
 class PostFragment : Fragment() {
 
@@ -60,6 +58,5 @@ class PostFragment : Fragment() {
 
     interface OnPostListener{
         fun newPost(post:Post?)
-        fun loadPost(postingCoroutine:Job)
     }
 }

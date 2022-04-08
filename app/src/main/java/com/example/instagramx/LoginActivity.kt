@@ -1,11 +1,15 @@
 package com.example.instagramx
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.KeyEvent
 import android.widget.Toast
 import com.example.instagramx.databinding.ActivityLoginBinding
+import com.google.gson.Gson
 
 class LoginActivity : AppCompatActivity() {
 
@@ -52,9 +56,7 @@ class LoginActivity : AppCompatActivity() {
                 //Correct password
                 password -> {
                     SingleLoggedUser.user = User(username, password)
-                    val intent = Intent(this, MainActivity::class.java)
-                    setResult(Activity.RESULT_OK, intent)
-                    finish()
+                    getIntoMain()
                 }
                 //Incorrect password
                 else -> {
@@ -62,7 +64,17 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this, "Incorrect password", Toast.LENGTH_SHORT).show()
                 }
             }
+
+            //Read User
+            val preferences = getPreferences(Context.MODE_PRIVATE)
+            val currentUser = preferences.getString("currentUser","NO_DATA")
+            if(currentUser!="NO_DATA") SingleLoggedUser.user = Gson().fromJson(currentUser, User::class.java)
+
+            //Go to MainActivity or keep in login depending if user is logged or not
+            if (SingleLoggedUser.user != null) getIntoMain()
         }
+
+
 
         /*
         fun getPasswordByUser(user:String):String?{
@@ -73,5 +85,29 @@ class LoginActivity : AppCompatActivity() {
             return null
         }
          */
+    }
+
+    private fun getIntoMain(){
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if(keyCode==KeyEvent.KEYCODE_BACK){
+            val builder = AlertDialog.Builder(this)
+            builder.setMessage(R.string.alert_exit)
+            builder.apply {
+                setPositiveButton(R.string.yes) { _, _ ->
+                    val intent = Intent(Intent.ACTION_MAIN)
+                    intent.addCategory(Intent.CATEGORY_HOME)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent)
+                }
+                setNegativeButton(R.string.no) { dialog, _ -> dialog.dismiss() }
+            }
+            builder.create()
+            builder.show()
+        }
+        return true
     }
 }

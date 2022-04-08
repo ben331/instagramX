@@ -26,4 +26,8 @@
     <string name="option_home">Principal</string>
     <string name="option_profile">Perfil</string>
 
+    //Alerts
+    <string name="alert_exit">Deseas salir de InstragramX?</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
 </resources>

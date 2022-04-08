@@ -25,4 +25,9 @@
     <string name="option_post">Post</string>
     <string name="option_home">Home</string>
     <string name="option_profile">Profile</string>
+
+    //Alerts
+    <string name="alert_exit">want to leave InstagramX?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
