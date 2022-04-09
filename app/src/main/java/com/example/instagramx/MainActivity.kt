@@ -1,11 +1,10 @@
 package com.example.instagramx
 
 import android.Manifest
-import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.graphics.BitmapFactory
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
@@ -51,11 +50,11 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
     //Launchers
     private val cameraLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult(),
-        ::onCameraResult
+        ::onResult
     )
     private val galleryLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult(),
-        ::onGalleryResult
+        ::onResult
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -150,16 +149,6 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
             requestPermissions(GALLERY_INTENT)
         }
     }
-    private fun onGalleryResult(result: ActivityResult) {
-        if(result.resultCode==Activity.RESULT_OK){
-            val uriImage = result.data?.data
-            uriImage.let{
-                postFragment.postPath = file.toString()
-                binding.toolbar.visibility = View.GONE
-                showFragment(postFragment)
-            }
-        }
-    }
 
     //-----------------------------------------------   CAMERA   ---------------------------------------------
     private fun openCamara() {
@@ -174,11 +163,12 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
             requestPermissions(CAMERA_INTENT)
         }
     }
-    private fun onCameraResult(result: ActivityResult) {
+
+    //-----------------------------------------------   RESULT CAMERA/GALLERY   ---------------------------------------------
+    private fun onResult(result: ActivityResult) {
         if (result.resultCode == RESULT_OK) {
-            postFragment.bitmap = BitmapFactory.decodeFile(file?.path)
-            postFragment.postPath = file.toString()
-            binding.toolbar.visibility = View.GONE
+            postFragment.thumbnail = result.data?.extras?.get("data") as Bitmap
+            postFragment.postPath = file!!.path
             showFragment(postFragment)
         } else if (result.resultCode == RESULT_CANCELED) {
             showFragment(homeFragment)

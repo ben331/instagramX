@@ -1,7 +1,9 @@
 package com.example.instagramx
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.MediaStore
@@ -13,6 +15,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import com.example.instagramx.databinding.FragmentProfileBinding
+import com.google.gson.Gson
 import java.io.File
 import java.util.*
 
@@ -24,11 +27,9 @@ class ProfileFragment : Fragment() {
 
     lateinit var listener: OnDoneChanges
 
-    private var file:File?=null
-
     private val launcher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult(),
-        ::onGalleryResult
+        ::onResult
     )
 
     override fun onCreateView(
@@ -45,10 +46,6 @@ class ProfileFragment : Fragment() {
         binding.profileChangeBtn.setOnClickListener{
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "image/*"
-            val fileName = "photo${Calendar.getInstance().time}.png"
-            file = File("${activity?.getExternalFilesDir(null)}/${fileName}")
-            val uri = FileProvider.getUriForFile(requireActivity(), requireActivity().packageName, file!!)
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
             launcher.launch(intent)
         }
 
@@ -68,14 +65,10 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
-    private fun onGalleryResult(result: ActivityResult){
+    private fun onResult(result: ActivityResult){
         if(result.resultCode==Activity.RESULT_OK){
-            val uriImage = result.data?.data
-            uriImage.let{
-                val bitmap = BitmapFactory.decodeFile(file.toString())
-                binding.profilePhoto.setImageBitmap(bitmap)
-                SingleLoggedUser.user?.photo = bitmap
-            }
+            SingleLoggedUser.user?.photo = result.data?.extras?.get("data") as Bitmap
+            binding.profilePhoto.setImageBitmap(SingleLoggedUser.user?.photo)
         }
     }
 

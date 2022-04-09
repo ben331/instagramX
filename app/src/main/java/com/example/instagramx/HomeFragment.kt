@@ -28,9 +28,7 @@ class HomeFragment : Fragment () {
         binding.postRecycler.setHasFixedSize(true)
         binding.postRecycler.adapter = adapter
 
-        for(i in 0..adapter.posts.size){
-            adapter.onBindViewHolder(PostView(R.layout.item_post), i)
-        }
+        adapter.notifyDataSetChanged()
 
         return binding.root
     }
