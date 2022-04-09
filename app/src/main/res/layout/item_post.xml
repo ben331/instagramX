@@ -51,6 +51,7 @@
 
         <Button
             android:id="@+id/moreBtn"
+            style="@style/ButtonTransStyle"
             android:layout_width="18dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="6dp"
@@ -82,6 +83,7 @@
 
         <Button
             android:id="@+id/likeBtn"
+            style="@style/ButtonTransStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -99,6 +101,7 @@
 
         <Button
             android:id="@+id/comentBtn"
+            style="@style/ButtonTransStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -115,6 +118,7 @@
 
         <Button
             android:id="@+id/shareBtn"
+            style="@style/ButtonTransStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="240dp"
@@ -132,6 +136,7 @@
 
         <Button
             android:id="@+id/saveBtn"
+            style="@style/ButtonTransStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"

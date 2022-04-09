@@ -1,14 +1,10 @@
 package com.example.instagramx
 
-import android.Manifest
-import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instagramx.databinding.FragmentHomeBinding
-import kotlin.system.exitProcess
 
 class HomeFragment : Fragment () {
 
@@ -31,7 +27,10 @@ class HomeFragment : Fragment () {
         binding.postRecycler.layoutManager = layoutManager
         binding.postRecycler.setHasFixedSize(true)
         binding.postRecycler.adapter = adapter
-        adapter.notifyDataSetChanged()
+
+        for(i in 0..adapter.posts.size){
+            adapter.onBindViewHolder(PostView(R.layout.item_post), i)
+        }
 
         return binding.root
     }

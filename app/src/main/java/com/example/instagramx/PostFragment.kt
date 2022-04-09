@@ -1,9 +1,7 @@
 package com.example.instagramx
 
 import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +16,7 @@ class PostFragment : Fragment() {
 
     //Status of postFragment: Uri from ImageCapture
     var bitmap : Bitmap?=null
-    var postUri: Uri?=null
+    var postPath: String?=null
 
     //Listener
     lateinit var listener: OnPostListener
@@ -39,11 +37,10 @@ class PostFragment : Fragment() {
         }
 
         binding.postShareBtn.setOnClickListener{
-            Log.e("Entra","entra")
             val caption = binding.postCaptionTxt.text.toString()
             val location = binding.postLocationSp.selectedItem.toString()
             val username = SingleLoggedUser.user!!.id
-            val post = Post(SingleLoggedUser.user!!.photo, username, postUri!!, caption, "location")
+            val post = Post(SingleLoggedUser.user!!.photo, username, postPath!!, caption, "location")
             listener.newPost(post)
         }
         /* Inflate the layout for this fragment */

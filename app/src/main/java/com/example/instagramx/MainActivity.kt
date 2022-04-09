@@ -6,11 +6,9 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
@@ -46,7 +44,6 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
 
     //File
     private var file: File? = null
-    private lateinit var uri: Uri
 
     //Vars
     private var havePermissions = false
@@ -62,7 +59,6 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //Thread.sleep(500) //To Show Splash or simulate back operations
         super.onCreate(savedInstanceState)
 
         //Bindings
@@ -93,7 +89,6 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
     }
 
     override fun logout() {
-        SingleLoggedUser.user = null
         val intent = Intent(this, LoginActivity::class.java).apply {
             putExtra("logout", true)
         }
@@ -146,6 +141,10 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         if(havePermissions){
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "image/*"
+            val fileName = "photo${Calendar.getInstance().time}.png"
+            file = File("${getExternalFilesDir(null)}/${fileName}")
+            val uri = FileProvider.getUriForFile(this, packageName, file!!)
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
             galleryLauncher.launch(intent)
         }else{
             requestPermissions(GALLERY_INTENT)
@@ -155,7 +154,7 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         if(result.resultCode==Activity.RESULT_OK){
             val uriImage = result.data?.data
             uriImage.let{
-                postFragment.postUri = uriImage
+                postFragment.postPath = file.toString()
                 binding.toolbar.visibility = View.GONE
                 showFragment(postFragment)
             }
@@ -168,7 +167,7 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             val fileName = "photo${Calendar.getInstance().time}.png"
             file = File("${getExternalFilesDir(null)}/${fileName}")
-            uri = FileProvider.getUriForFile(this, packageName, file!!)
+            val uri = FileProvider.getUriForFile(this, packageName, file!!)
             intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
             cameraLauncher.launch(intent)
         }else{
@@ -178,7 +177,7 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
     private fun onCameraResult(result: ActivityResult) {
         if (result.resultCode == RESULT_OK) {
             postFragment.bitmap = BitmapFactory.decodeFile(file?.path)
-            postFragment.postUri = uri
+            postFragment.postPath = file.toString()
             binding.toolbar.visibility = View.GONE
             showFragment(postFragment)
         } else if (result.resultCode == RESULT_CANCELED) {

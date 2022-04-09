@@ -1,10 +1,10 @@
 package com.example.instagramx
 
-import android.net.Uri
+import android.graphics.Bitmap
 
-class Post(var userphotoURI: Uri?,
+data class Post(var userphotoBitmap: Bitmap?,
            var username: String,
-           var image: Uri,
+           var imagePath: String,
            var caption: String?,
            var location: String?
            ){

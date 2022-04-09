@@ -1,6 +1,5 @@
 package com.example.instagramx
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
@@ -19,23 +18,23 @@ class LoginActivity : AppCompatActivity() {
     private val binding get() = _binding!!
 
     //Default registered users
-    private val defaultUsers = arrayOf(
-        User("alfa@gmail.com","aplicacionesmoviles"),
-        User("beta@gamil.com", "aplicacionesmoviles"))
+    private lateinit var defaultUsers: Array<User>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        readUsers()
 
-        if(intent.extras==null){
+        if(intent.extras!=null){ //If this is an intent to logout
+            SingleLoggedUser.user = null
+            getPreferences(Context.MODE_PRIVATE).edit()
+                .remove("currentUser")
+                .apply()
+        }else{
             //Read User
             val preferences = getPreferences(Context.MODE_PRIVATE)
             val currentUser = preferences.getString("currentUser","NO_DATA")
             if(currentUser!="NO_DATA") SingleLoggedUser.user = Gson().fromJson(currentUser, User::class.java)
-        }else{
-            getPreferences(Context.MODE_PRIVATE).edit()
-                .remove("currentUser")
-                .apply()
         }
 
         //Go to MainActivity or keep in login depending if user is logged or not
@@ -91,6 +90,20 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun readUsers(){
+        //Read users
+        val preferences = getPreferences(Context.MODE_PRIVATE)
+        val users = preferences.getString("users","NO_DATA")
+        defaultUsers = if(users!="NO_DATA"){
+            Gson().fromJson(users,UsersWrapper::class.java).users
+        }else{
+            arrayOf(
+                User("alfa@gmail.com","aplicacionesmoviles"),
+                User("beta@gmail.com","aplicacionesmoviles")
+            )
+        }
+    }
+
     private fun getIntoMain(){
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
@@ -113,5 +126,19 @@ class LoginActivity : AppCompatActivity() {
             builder.show()
         }
         return true
+    }
+
+    //-----------------------------------------------   SERIALIZATION   ---------------------------------------------
+    override fun onPause() {
+        super.onPause()
+        val users = Gson().toJson(UsersWrapper(defaultUsers))
+        val preferences = getPreferences(Context.MODE_PRIVATE)
+        preferences.edit()
+            .putString("users",users)
+            .apply()
+    }
+    override fun onResume(){
+        super.onResume()
+        readUsers()
     }
 }
