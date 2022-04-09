@@ -4,6 +4,7 @@ package com.example.instagramx
 //Singleton
 object SingleLoggedUser {
     var user:User?=null
+    var openSession = false
 }
 
 /*

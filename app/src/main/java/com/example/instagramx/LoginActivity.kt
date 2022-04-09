@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.widget.Toast
 import com.example.instagramx.databinding.ActivityLoginBinding
@@ -26,65 +27,68 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //Binding
-        _binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        //Login function
-        binding.loginBtn.setOnClickListener {
-
-            //Read fields
-            val username = binding.loginUsername.text.toString()
-            val password = binding.loginPassword.text.toString()
-
-            //Validate user-password
-            var correctPassword:String? = null
-            for(element in defaultUsers) {
-                if (element.id == username)
-                    correctPassword = element.password
-            }
-
-            when(correctPassword) {
-
-                //User no registered
-                null -> {
-                    //Clean fields
-                    binding.loginUsername.setText("")
-                    binding.loginPassword.setText("")
-                    Toast.makeText(this, "$username is not registered", Toast.LENGTH_SHORT).show()
-                }
-                //Correct password
-                password -> {
-                    SingleLoggedUser.user = User(username, password)
-                    getIntoMain()
-                }
-                //Incorrect password
-                else -> {
-                    binding.loginPassword.setText("")
-                    Toast.makeText(this, "Incorrect password", Toast.LENGTH_SHORT).show()
-                }
-            }
-
+        if(intent.extras==null){
             //Read User
             val preferences = getPreferences(Context.MODE_PRIVATE)
             val currentUser = preferences.getString("currentUser","NO_DATA")
             if(currentUser!="NO_DATA") SingleLoggedUser.user = Gson().fromJson(currentUser, User::class.java)
-
-            //Go to MainActivity or keep in login depending if user is logged or not
-            if (SingleLoggedUser.user != null) getIntoMain()
+        }else{
+            getPreferences(Context.MODE_PRIVATE).edit()
+                .remove("currentUser")
+                .apply()
         }
 
+        //Go to MainActivity or keep in login depending if user is logged or not
+        if (SingleLoggedUser.user != null) {getIntoMain(); Log.e("no null","no null")}
+        else{
 
+            //Binding
+            _binding = ActivityLoginBinding.inflate(layoutInflater)
+            setContentView(binding.root)
 
-        /*
-        fun getPasswordByUser(user:String):String?{
-            for(element in defaultUsers){
-                if(element.id == username)
-                    return element.password
+            //Login function
+            binding.loginBtn.setOnClickListener {
+
+                //Read fields
+                val username = binding.loginUsername.text.toString()
+                val password = binding.loginPassword.text.toString()
+
+                //Validate user-password
+                var correctPassword:String? = null
+                for(element in defaultUsers) {
+                    if (element.id == username)
+                        correctPassword = element.password
+                }
+
+                when(correctPassword) {
+
+                    //User no registered
+                    null -> {
+                        //Clean fields
+                        binding.loginUsername.setText("")
+                        binding.loginPassword.setText("")
+                        Toast.makeText(this, "$username is not registered", Toast.LENGTH_SHORT).show()
+                    }
+                    //Correct password
+                    password -> {
+
+                        //Save and serialize user
+                        SingleLoggedUser.user = User(username, password)
+                        val cUser = Gson().toJson(SingleLoggedUser.user)
+                        getPreferences(Context.MODE_PRIVATE).edit()
+                            .putString("currentUser", cUser)
+                            .apply()
+
+                        getIntoMain()
+                    }
+                    //Incorrect password
+                    else -> {
+                        binding.loginPassword.setText("")
+                        Toast.makeText(this, "Incorrect password", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
-            return null
         }
-         */
     }
 
     private fun getIntoMain(){

@@ -10,6 +10,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
@@ -91,15 +92,12 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         }
     }
 
-    private fun login(){
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-    }
-
     override fun logout() {
         SingleLoggedUser.user = null
-        showFragment(homeFragment)
-        login()
+        val intent = Intent(this, LoginActivity::class.java).apply {
+            putExtra("logout", true)
+        }
+        startActivity(intent)
     }
 
     //-----------------------------------------------   FRAGMENTS   ---------------------------------------------
@@ -241,11 +239,9 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
     override fun onPause() {
         super.onPause()
         val posts = Gson().toJson(PostsWrapper(homeFragment.adapter.posts))
-        val currentUser = Gson().toJson(SingleLoggedUser.user)
         val preferences = getPreferences(Context.MODE_PRIVATE)
         preferences.edit()
             .putString("posts",posts)
-            .putString("currentUser",currentUser)
             .putBoolean("permissions",havePermissions)
             .apply()
     }

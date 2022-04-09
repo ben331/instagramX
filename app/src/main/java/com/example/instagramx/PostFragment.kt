@@ -34,10 +34,14 @@ class PostFragment : Fragment() {
 
         binding.postImage.setImageBitmap(bitmap)
 
+        binding.backBtn.setOnClickListener{
+            listener.newPost(null)
+        }
+
         binding.postShareBtn.setOnClickListener{
             Log.e("Entra","entra")
             val caption = binding.postCaptionTxt.text.toString()
-            //val location = binding.postLocationSp.selectedItem.toString()
+            val location = binding.postLocationSp.selectedItem.toString()
             val username = SingleLoggedUser.user!!.id
             val post = Post(SingleLoggedUser.user!!.photo, username, postUri!!, caption, "location")
             listener.newPost(post)
