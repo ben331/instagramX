@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.KeyEvent
 import android.widget.Toast
 import com.example.instagramx.databinding.ActivityLoginBinding
@@ -18,14 +17,13 @@ class LoginActivity : AppCompatActivity() {
     private val binding get() = _binding!!
 
     //Default registered users
-    private lateinit var defaultUsers: Array<User>
-
+    private var defaultUsers = ArrayList<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         readUsers()
 
-        if(intent.extras!=null){ //If this is an intent to logout
+        if(intent.extras!=null){ //This happens cause an intent to logout from MainActivity
             SingleLoggedUser.user = null
             getPreferences(Context.MODE_PRIVATE).edit()
                 .remove("currentUser")
@@ -38,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         //Go to MainActivity or keep in login depending if user is logged or not
-        if (SingleLoggedUser.user != null) {getIntoMain(); Log.e("no null","no null")}
+        if (SingleLoggedUser.user != null) getIntoMain()
         else{
 
             //Binding
@@ -55,8 +53,10 @@ class LoginActivity : AppCompatActivity() {
                 //Validate user-password
                 var correctPassword:String? = null
                 for(element in defaultUsers) {
-                    if (element.id == username)
+                    if (element.id == username){
                         correctPassword = element.password
+                        SingleLoggedUser.index=defaultUsers.indexOf(element)
+                    }
                 }
 
                 when(correctPassword) {
@@ -94,19 +94,25 @@ class LoginActivity : AppCompatActivity() {
         //Read users
         val preferences = getPreferences(Context.MODE_PRIVATE)
         val users = preferences.getString("users","NO_DATA")
-        defaultUsers = if(users!="NO_DATA"){
-            Gson().fromJson(users,UsersWrapper::class.java).users
+        if(users!="NO_DATA"){
+            defaultUsers =  Gson().fromJson(users,UsersWrapper::class.java).users
         }else{
-            arrayOf(
-                User("alfa@gmail.com","aplicacionesmoviles"),
-                User("beta@gmail.com","aplicacionesmoviles")
-            )
+            defaultUsers.add(User("alfa@gmail.com","aplicacionesmoviles"))
+            defaultUsers.add(User("beta@gmail.com","aplicacionesmoviles"))
         }
     }
 
     private fun getIntoMain(){
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+    }
+
+    fun updateUser(){
+        readUsers()
+        defaultUsers[SingleLoggedUser.index] = SingleLoggedUser.user!!
+        getPreferences(Context.MODE_PRIVATE).edit()
+            .putString("users", Gson().toJson(UsersWrapper(defaultUsers)))
+            .apply()
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {

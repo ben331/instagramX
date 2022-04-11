@@ -16,7 +16,7 @@ class PostFragment : Fragment() {
 
     //Status of postFragment: Uri from ImageCapture
     var thumbnail: Bitmap?=null
-    var postPath: String?=null
+    var postUri: String?=null
 
     //Listener
     lateinit var listener: OnPostListener
@@ -28,17 +28,19 @@ class PostFragment : Fragment() {
 
         _binding = FragmentPostBinding.inflate(inflater, container, false)
 
+        //Show preview post
         binding.postImage.setImageBitmap(thumbnail)
 
+        //Cancel posts and back
         binding.backBtn.setOnClickListener{
             listener.newPost(null)
         }
 
         binding.postShareBtn.setOnClickListener{
             val caption = binding.postCaptionTxt.text.toString()
-            //val location = binding.postLocationSp.selectedItem.toString()
+            val location = binding.postLocationSp.selectedItem.toString()
             val username = SingleLoggedUser.user!!.id
-            val post = Post(SingleLoggedUser.user!!.photo, username, postPath!!, caption, "location")
+            val post = Post(SingleLoggedUser.user!!.photo, username, postUri!!, caption, location)
             listener.newPost(post)
         }
         /* Inflate the layout for this fragment */
@@ -48,8 +50,6 @@ class PostFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        thumbnail = null
-        postPath = null
     }
 
     companion object {

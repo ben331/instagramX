@@ -4,7 +4,10 @@ package com.example.instagramx
 //Singleton
 object SingleLoggedUser {
     var user:User?=null
-    var openSession = false
+    var index = 0
+    override fun toString(): String {
+        return user.toString()
+    }
 }
 
 /*

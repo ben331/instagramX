@@ -1,3 +1,3 @@
 package com.example.instagramx
 
-data class UsersWrapper (val users:Array<User>)
+data class UsersWrapper (val users:ArrayList<User>)

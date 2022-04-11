@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 
 data class Post(var userphotoBitmap: Bitmap?,
            var username: String,
-           var imagePath: String,
+           var imageUri: String,
            var caption: String?,
            var location: String?
            ){

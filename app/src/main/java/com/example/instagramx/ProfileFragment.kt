@@ -1,23 +1,16 @@
 package com.example.instagramx
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.FileProvider
 import com.example.instagramx.databinding.FragmentProfileBinding
-import com.google.gson.Gson
-import java.io.File
-import java.util.*
 
 class ProfileFragment : Fragment() {
 

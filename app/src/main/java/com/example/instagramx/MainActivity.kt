@@ -50,11 +50,11 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
     //Launchers
     private val cameraLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult(),
-        ::onResult
+        ::onCameraResult
     )
     private val galleryLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult(),
-        ::onResult
+        ::onGalleryResult
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
     override fun onOptionsItemSelected(menu: MenuItem): Boolean {
         when (menu.itemId) {
             R.id.messenger_action -> Toast.makeText(this, "Messenger Button Pressed", Toast.LENGTH_SHORT).show()
-            R.id.activity_action -> Toast.makeText(this, "Activity Button Pressed", Toast.LENGTH_SHORT).show()
+            R.id.activity_action -> Toast.makeText(this, SingleLoggedUser.toString(), Toast.LENGTH_SHORT).show()
             R.id.media_action -> showPopup(binding.toolbar.findViewById(R.id.media_action))
         }
         return super.onOptionsItemSelected(menu)
@@ -140,13 +140,19 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         if(havePermissions){
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "image/*"
-            val fileName = "photo${Calendar.getInstance().time}.png"
-            file = File("${getExternalFilesDir(null)}/${fileName}")
-            val uri = FileProvider.getUriForFile(this, packageName, file!!)
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
             galleryLauncher.launch(intent)
         }else{
             requestPermissions(GALLERY_INTENT)
+        }
+    }
+
+    private fun onGalleryResult(result: ActivityResult) {
+        if (result.resultCode == RESULT_OK) {
+            postFragment.postUri = result.data?.data.toString()
+            postFragment.thumbnail = result.data?.extras?.get("data") as Bitmap
+            showFragment(postFragment)
+        } else if (result.resultCode == RESULT_CANCELED) {
+            showFragment(homeFragment)
         }
     }
 
@@ -154,7 +160,7 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
     private fun openCamara() {
         if(havePermissions){
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            val fileName = "photo${Calendar.getInstance().time}.png"
+            val fileName = "photo_${Calendar.getInstance().time}.png"
             file = File("${getExternalFilesDir(null)}/${fileName}")
             val uri = FileProvider.getUriForFile(this, packageName, file!!)
             intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
@@ -164,11 +170,11 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
         }
     }
 
-    //-----------------------------------------------   RESULT CAMERA/GALLERY   ---------------------------------------------
-    private fun onResult(result: ActivityResult) {
+
+    private fun onCameraResult(result: ActivityResult) {
         if (result.resultCode == RESULT_OK) {
             postFragment.thumbnail = result.data?.extras?.get("data") as Bitmap
-            postFragment.postPath = file!!.path
+            postFragment.postUri = file!!.path
             showFragment(postFragment)
         } else if (result.resultCode == RESULT_CANCELED) {
             showFragment(homeFragment)
@@ -218,6 +224,7 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
     //ProfileFragment.OnDoneChanges
     override fun doneChanges(done: Boolean) {
         if (done) {
+            LoginActivity().updateUser()
             Toast.makeText(this, "Saved changes", Toast.LENGTH_SHORT).show()
         }
         showFragment(homeFragment)

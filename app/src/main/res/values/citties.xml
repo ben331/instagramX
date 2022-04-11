@@ -1,0 +1,1129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array
+        name="cities">
+        <item>MedellÃ­n</item>
+        <item>Abejorral</item>
+        <item>AbriaquÃ­</item>
+        <item>AlejandrÃ­a</item>
+        <item>AmagÃ¡</item>
+        <item>Amalfi</item>
+        <item>Andes</item>
+        <item>AngelÃ³polis</item>
+        <item>Angostura</item>
+        <item>AnorÃ­</item>
+        <item>TununguÃ¡</item>
+        <item>Anza</item>
+        <item>ApartadÃ³</item>
+        <item>Arboletes</item>
+        <item>Argelia</item>
+        <item>Armenia</item>
+        <item>Barbosa</item>
+        <item>Bello</item>
+        <item>Betania</item>
+        <item>Betulia</item>
+        <item>Ciudad BolÃ­var</item>
+        <item>BriceÃ±o</item>
+        <item>BuriticÃ¡</item>
+        <item>CÃ¡ceres</item>
+        <item>Caicedo</item>
+        <item>Caldas</item>
+        <item>Campamento</item>
+        <item>CaÃ±asgordas</item>
+        <item>CaracolÃ­</item>
+        <item>Caramanta</item>
+        <item>Carepa</item>
+        <item>Motavita</item>
+        <item>Carolina</item>
+        <item>Caucasia</item>
+        <item>ChigorodÃ³</item>
+        <item>Cisneros</item>
+        <item>CocornÃ¡</item>
+        <item>ConcepciÃ³n</item>
+        <item>Concordia</item>
+        <item>Copacabana</item>
+        <item>Dabeiba</item>
+        <item>Don MatÃ­as</item>
+        <item>EbÃ©jico</item>
+        <item>El Bagre</item>
+        <item>Entrerrios</item>
+        <item>Envigado</item>
+        <item>Fredonia</item>
+        <item>San Bernardo del Viento</item>
+        <item>Giraldo</item>
+        <item>Girardota</item>
+        <item>GÃ³mez Plata</item>
+        <item>Istmina</item>
+        <item>Guadalupe</item>
+        <item>Guarne</item>
+        <item>GuatapÃ©</item>
+        <item>Heliconia</item>
+        <item>Hispania</item>
+        <item>Itagui</item>
+        <item>Ituango</item>
+        <item>Belmira</item>
+        <item>JericÃ³</item>
+        <item>La Ceja</item>
+        <item>La Estrella</item>
+        <item>La Pintada</item>
+        <item>La UniÃ³n</item>
+        <item>Liborina</item>
+        <item>Maceo</item>
+        <item>Marinilla</item>
+        <item>Montebello</item>
+        <item>MurindÃ³</item>
+        <item>MutatÃ¡</item>
+        <item>NariÃ±o</item>
+        <item>NecoclÃ­</item>
+        <item>NechÃ­</item>
+        <item>Olaya</item>
+        <item>PeÃ±ol</item>
+        <item>Peque</item>
+        <item>Pueblorrico</item>
+        <item>Puerto BerrÃ­o</item>
+        <item>Puerto Nare</item>
+        <item>Puerto Triunfo</item>
+        <item>Remedios</item>
+        <item>Retiro</item>
+        <item>Rionegro</item>
+        <item>Sabanalarga</item>
+        <item>Sabaneta</item>
+        <item>Salgar</item>
+        <item>CiÃ©nega</item>
+        <item>Santacruz</item>
+        <item>San Francisco</item>
+        <item>San JerÃ³nimo</item>
+        <item>Puerto Wilches</item>
+        <item>Puerto Parra</item>
+        <item>San Luis</item>
+        <item>San Pedro</item>
+        <item>San Rafael</item>
+        <item>San Roque</item>
+        <item>San Vicente</item>
+        <item>Santa BÃ¡rbara</item>
+        <item>Santo Domingo</item>
+        <item>El Santuario</item>
+        <item>Segovia</item>
+        <item>SopetrÃ¡n</item>
+        <item>Uribe</item>
+        <item>TÃ¡mesis</item>
+        <item>TarazÃ¡</item>
+        <item>Tarso</item>
+        <item>TitiribÃ­</item>
+        <item>Toledo</item>
+        <item>Turbo</item>
+        <item>Uramita</item>
+        <item>Urrao</item>
+        <item>Valdivia</item>
+        <item>ValparaÃ­so</item>
+        <item>VegachÃ­</item>
+        <item>Venecia</item>
+        <item>YalÃ­</item>
+        <item>Yarumal</item>
+        <item>YolombÃ³</item>
+        <item>YondÃ³</item>
+        <item>Zaragoza</item>
+        <item>Barranquilla</item>
+        <item>Baranoa</item>
+        <item>Candelaria</item>
+        <item>Galapa</item>
+        <item>Luruaco</item>
+        <item>Malambo</item>
+        <item>ManatÃ­</item>
+        <item>PiojÃ³</item>
+        <item>Polonuevo</item>
+        <item>Sabanagrande</item>
+        <item>Sabanalarga</item>
+        <item>Santa LucÃ­a</item>
+        <item>Santo TomÃ¡s</item>
+        <item>Soledad</item>
+        <item>Suan</item>
+        <item>TubarÃ¡</item>
+        <item>UsiacurÃ­</item>
+        <item>AchÃ­</item>
+        <item>Arenal</item>
+        <item>Arjona</item>
+        <item>Arroyohondo</item>
+        <item>Calamar</item>
+        <item>Cantagallo</item>
+        <item>Cicuco</item>
+        <item>CÃ³rdoba</item>
+        <item>Clemencia</item>
+        <item>El Guamo</item>
+        <item>MaganguÃ©</item>
+        <item>Mahates</item>
+        <item>Margarita</item>
+        <item>Montecristo</item>
+        <item>MompÃ³s</item>
+        <item>Morales</item>
+        <item>NorosÃ­</item>
+        <item>Pinillos</item>
+        <item>Regidor</item>
+        <item>RÃ­o Viejo</item>
+        <item>San Estanislao</item>
+        <item>San Fernando</item>
+        <item>San Juan Nepomuceno</item>
+        <item>Santa Catalina</item>
+        <item>Santa Rosa</item>
+        <item>SimitÃ­</item>
+        <item>Soplaviento</item>
+        <item>Talaigua Nuevo</item>
+        <item>Tiquisio</item>
+        <item>Turbaco</item>
+        <item>TurbanÃ¡</item>
+        <item>Villanueva</item>
+        <item>Tunja</item>
+        <item>Almeida</item>
+        <item>Aquitania</item>
+        <item>Arcabuco</item>
+        <item>Berbeo</item>
+        <item>BetÃ©itiva</item>
+        <item>Boavita</item>
+        <item>BoyacÃ¡</item>
+        <item>BriceÃ±o</item>
+        <item>Buena Vista</item>
+        <item>BusbanzÃ¡</item>
+        <item>Caldas</item>
+        <item>Campohermoso</item>
+        <item>Cerinza</item>
+        <item>Chinavita</item>
+        <item>ChiquinquirÃ¡</item>
+        <item>Chiscas</item>
+        <item>Chita</item>
+        <item>Chitaraque</item>
+        <item>ChivatÃ¡</item>
+        <item>CÃ³mbita</item>
+        <item>Coper</item>
+        <item>Corrales</item>
+        <item>CovarachÃ­a</item>
+        <item>CubarÃ¡</item>
+        <item>Cucaita</item>
+        <item>CuÃ­tiva</item>
+        <item>ChÃ­quiza</item>
+        <item>Chivor</item>
+        <item>Duitama</item>
+        <item>El Cocuy</item>
+        <item>El Espino</item>
+        <item>Firavitoba</item>
+        <item>Floresta</item>
+        <item>GachantivÃ¡</item>
+        <item>Gameza</item>
+        <item>Garagoa</item>
+        <item>Guacamayas</item>
+        <item>Guateque</item>
+        <item>GuayatÃ¡</item>
+        <item>GÃ¼icÃ¡n</item>
+        <item>Iza</item>
+        <item>Jenesano</item>
+        <item>JericÃ³</item>
+        <item>Labranzagrande</item>
+        <item>La Capilla</item>
+        <item>La Victoria</item>
+        <item>Macanal</item>
+        <item>MaripÃ­</item>
+        <item>Miraflores</item>
+        <item>Mongua</item>
+        <item>MonguÃ­</item>
+        <item>MoniquirÃ¡</item>
+        <item>Muzo</item>
+        <item>Nobsa</item>
+        <item>Nuevo ColÃ³n</item>
+        <item>OicatÃ¡</item>
+        <item>Otanche</item>
+        <item>Pachavita</item>
+        <item>PÃ¡ez</item>
+        <item>Paipa</item>
+        <item>Pajarito</item>
+        <item>Panqueba</item>
+        <item>Pauna</item>
+        <item>Paya</item>
+        <item>Pesca</item>
+        <item>Pisba</item>
+        <item>Puerto BoyacÃ¡</item>
+        <item>QuÃ­pama</item>
+        <item>RamiriquÃ­</item>
+        <item>RÃ¡quira</item>
+        <item>RondÃ³n</item>
+        <item>SaboyÃ¡</item>
+        <item>SÃ¡chica</item>
+        <item>SamacÃ¡</item>
+        <item>San Eduardo</item>
+        <item>San Mateo</item>
+        <item>Santana</item>
+        <item>Santa MarÃ­a</item>
+        <item>Santa SofÃ­a</item>
+        <item>Sativanorte</item>
+        <item>Sativasur</item>
+        <item>Siachoque</item>
+        <item>SoatÃ¡</item>
+        <item>SocotÃ¡</item>
+        <item>Socha</item>
+        <item>Sogamoso</item>
+        <item>Somondoco</item>
+        <item>Sora</item>
+        <item>SotaquirÃ¡</item>
+        <item>SoracÃ¡</item>
+        <item>SusacÃ³n</item>
+        <item>SutamarchÃ¡n</item>
+        <item>Sutatenza</item>
+        <item>Tasco</item>
+        <item>Tenza</item>
+        <item>TibanÃ¡</item>
+        <item>TinjacÃ¡</item>
+        <item>Tipacoque</item>
+        <item>Toca</item>
+        <item>TÃ³paga</item>
+        <item>Tota</item>
+        <item>TurmequÃ©</item>
+        <item>TutazÃ¡</item>
+        <item>Umbita</item>
+        <item>Ventaquemada</item>
+        <item>ViracachÃ¡</item>
+        <item>Zetaquira</item>
+        <item>Manizales</item>
+        <item>Aguadas</item>
+        <item>Anserma</item>
+        <item>Aranzazu</item>
+        <item>BelalcÃ¡zar</item>
+        <item>ChinchinÃ¡</item>
+        <item>Filadelfia</item>
+        <item>La Dorada</item>
+        <item>La Merced</item>
+        <item>Manzanares</item>
+        <item>Marmato</item>
+        <item>Marulanda</item>
+        <item>Neira</item>
+        <item>Norcasia</item>
+        <item>PÃ¡cora</item>
+        <item>Palestina</item>
+        <item>Pensilvania</item>
+        <item>Riosucio</item>
+        <item>Risaralda</item>
+        <item>Salamina</item>
+        <item>SamanÃ¡</item>
+        <item>San JosÃ©</item>
+        <item>SupÃ­a</item>
+        <item>Victoria</item>
+        <item>VillamarÃ­a</item>
+        <item>Viterbo</item>
+        <item>Florencia</item>
+        <item>Albania</item>
+        <item>Curillo</item>
+        <item>El Doncello</item>
+        <item>El Paujil</item>
+        <item>Morelia</item>
+        <item>Puerto Rico</item>
+        <item>Solano</item>
+        <item>Solita</item>
+        <item>ValparaÃ­so</item>
+        <item>PopayÃ¡n</item>
+        <item>Almaguer</item>
+        <item>Argelia</item>
+        <item>Balboa</item>
+        <item>BolÃ­var</item>
+        <item>Buenos Aires</item>
+        <item>CajibÃ­o</item>
+        <item>Caldono</item>
+        <item>Caloto</item>
+        <item>Corinto</item>
+        <item>El Tambo</item>
+        <item>Florencia</item>
+        <item>GuachenÃ©</item>
+        <item>Guapi</item>
+        <item>InzÃ¡</item>
+        <item>JambalÃ³</item>
+        <item>La Sierra</item>
+        <item>La Vega</item>
+        <item>LÃ³pez</item>
+        <item>Mercaderes</item>
+        <item>Miranda</item>
+        <item>Morales</item>
+        <item>Padilla</item>
+        <item>PatÃ­a</item>
+        <item>Piamonte</item>
+        <item>PiendamÃ³</item>
+        <item>Puerto Tejada</item>
+        <item>PuracÃ©</item>
+        <item>Rosas</item>
+        <item>Santa Rosa</item>
+        <item>Silvia</item>
+        <item>Sotara</item>
+        <item>SuÃ¡rez</item>
+        <item>Sucre</item>
+        <item>TimbÃ­o</item>
+        <item>TimbiquÃ­</item>
+        <item>Toribio</item>
+        <item>TotorÃ³</item>
+        <item>Villa Rica</item>
+        <item>Valledupar</item>
+        <item>Aguachica</item>
+        <item>AgustÃ­n Codazzi</item>
+        <item>Astrea</item>
+        <item>Becerril</item>
+        <item>Bosconia</item>
+        <item>Chimichagua</item>
+        <item>ChiriguanÃ¡</item>
+        <item>CurumanÃ­</item>
+        <item>El Copey</item>
+        <item>El Paso</item>
+        <item>Gamarra</item>
+        <item>GonzÃ¡lez</item>
+        <item>La Gloria</item>
+        <item>Manaure</item>
+        <item>Pailitas</item>
+        <item>Pelaya</item>
+        <item>Pueblo Bello</item>
+        <item>La Paz</item>
+        <item>San Alberto</item>
+        <item>San Diego</item>
+        <item>San MartÃ­n</item>
+        <item>Tamalameque</item>
+        <item>MonterÃ­a</item>
+        <item>Ayapel</item>
+        <item>Buenavista</item>
+        <item>Canalete</item>
+        <item>CeretÃ©</item>
+        <item>ChimÃ¡</item>
+        <item>ChinÃº</item>
+        <item>Cotorra</item>
+        <item>Lorica</item>
+        <item>Los CÃ³rdobas</item>
+        <item>Momil</item>
+        <item>MoÃ±itos</item>
+        <item>Planeta Rica</item>
+        <item>Pueblo Nuevo</item>
+        <item>Puerto Escondido</item>
+        <item>PurÃ­sima</item>
+        <item>SahagÃºn</item>
+        <item>San AndrÃ©s Sotavento</item>
+        <item>San Antero</item>
+        <item>San Pelayo</item>
+        <item>Tierralta</item>
+        <item>TuchÃ­n</item>
+        <item>Valencia</item>
+        <item>Anapoima</item>
+        <item>ArbelÃ¡ez</item>
+        <item>BeltrÃ¡n</item>
+        <item>Bituima</item>
+        <item>BojacÃ¡</item>
+        <item>Cabrera</item>
+        <item>Cachipay</item>
+        <item>CajicÃ¡</item>
+        <item>CaparrapÃ­</item>
+        <item>Caqueza</item>
+        <item>ChaguanÃ­</item>
+        <item>Chipaque</item>
+        <item>ChoachÃ­</item>
+        <item>ChocontÃ¡</item>
+        <item>Cogua</item>
+        <item>Cota</item>
+        <item>CucunubÃ¡</item>
+        <item>El Colegio</item>
+        <item>El Rosal</item>
+        <item>Fomeque</item>
+        <item>Fosca</item>
+        <item>Funza</item>
+        <item>FÃºquene</item>
+        <item>Gachala</item>
+        <item>GachancipÃ¡</item>
+        <item>GachetÃ¡</item>
+        <item>Girardot</item>
+        <item>Granada</item>
+        <item>GuachetÃ¡</item>
+        <item>Guaduas</item>
+        <item>Guasca</item>
+        <item>GuataquÃ­</item>
+        <item>Guatavita</item>
+        <item>Guayabetal</item>
+        <item>GutiÃ©rrez</item>
+        <item>JerusalÃ©n</item>
+        <item>JunÃ­n</item>
+        <item>La Calera</item>
+        <item>La Mesa</item>
+        <item>La Palma</item>
+        <item>La PeÃ±a</item>
+        <item>La Vega</item>
+        <item>Lenguazaque</item>
+        <item>Macheta</item>
+        <item>Madrid</item>
+        <item>Manta</item>
+        <item>Medina</item>
+        <item>Mosquera</item>
+        <item>NariÃ±o</item>
+        <item>NemocÃ³n</item>
+        <item>Nilo</item>
+        <item>Nimaima</item>
+        <item>Nocaima</item>
+        <item>Venecia</item>
+        <item>Pacho</item>
+        <item>Paime</item>
+        <item>Pandi</item>
+        <item>Paratebueno</item>
+        <item>Pasca</item>
+        <item>Puerto Salgar</item>
+        <item>PulÃ­</item>
+        <item>Quebradanegra</item>
+        <item>Quetame</item>
+        <item>Quipile</item>
+        <item>Apulo</item>
+        <item>Ricaurte</item>
+        <item>San Bernardo</item>
+        <item>San Cayetano</item>
+        <item>San Francisco</item>
+        <item>SesquilÃ©</item>
+        <item>SibatÃ©</item>
+        <item>Silvania</item>
+        <item>Simijaca</item>
+        <item>Soacha</item>
+        <item>Subachoque</item>
+        <item>Suesca</item>
+        <item>SupatÃ¡</item>
+        <item>Susa</item>
+        <item>Sutatausa</item>
+        <item>Tabio</item>
+        <item>Tausa</item>
+        <item>Tena</item>
+        <item>Tenjo</item>
+        <item>Tibacuy</item>
+        <item>Tibirita</item>
+        <item>Tocaima</item>
+        <item>TocancipÃ¡</item>
+        <item>TopaipÃ­</item>
+        <item>UbalÃ¡</item>
+        <item>Ubaque</item>
+        <item>Une</item>
+        <item>Ãštica</item>
+        <item>VianÃ­</item>
+        <item>VillagÃ³mez</item>
+        <item>VillapinzÃ³n</item>
+        <item>Villeta</item>
+        <item>ViotÃ¡</item>
+        <item>ZipacÃ³n</item>
+        <item>QuibdÃ³</item>
+        <item>AcandÃ­</item>
+        <item>Alto Baudo</item>
+        <item>Atrato</item>
+        <item>BagadÃ³</item>
+        <item>BahÃ­a Solano</item>
+        <item>Bajo BaudÃ³</item>
+        <item>Bojaya</item>
+        <item>CÃ©rtegui</item>
+        <item>Condoto</item>
+        <item>JuradÃ³</item>
+        <item>LlorÃ³</item>
+        <item>Medio Atrato</item>
+        <item>Medio BaudÃ³</item>
+        <item>Medio San Juan</item>
+        <item>NÃ³vita</item>
+        <item>NuquÃ­</item>
+        <item>RÃ­o Iro</item>
+        <item>RÃ­o Quito</item>
+        <item>Riosucio</item>
+        <item>SipÃ­</item>
+        <item>UnguÃ­a</item>
+        <item>Neiva</item>
+        <item>Acevedo</item>
+        <item>Agrado</item>
+        <item>Aipe</item>
+        <item>Algeciras</item>
+        <item>Altamira</item>
+        <item>Baraya</item>
+        <item>Campoalegre</item>
+        <item>Colombia</item>
+        <item>ElÃ­as</item>
+        <item>GarzÃ³n</item>
+        <item>Gigante</item>
+        <item>Guadalupe</item>
+        <item>Hobo</item>
+        <item>Iquira</item>
+        <item>Isnos</item>
+        <item>La Argentina</item>
+        <item>La Plata</item>
+        <item>NÃ¡taga</item>
+        <item>Oporapa</item>
+        <item>Paicol</item>
+        <item>Palermo</item>
+        <item>Palestina</item>
+        <item>Pital</item>
+        <item>Pitalito</item>
+        <item>Rivera</item>
+        <item>Saladoblanco</item>
+        <item>Santa MarÃ­a</item>
+        <item>Suaza</item>
+        <item>Tarqui</item>
+        <item>Tesalia</item>
+        <item>Tello</item>
+        <item>Teruel</item>
+        <item>TimanÃ¡</item>
+        <item>Villavieja</item>
+        <item>YaguarÃ¡</item>
+        <item>Riohacha</item>
+        <item>Albania</item>
+        <item>Barrancas</item>
+        <item>Dibula</item>
+        <item>DistracciÃ³n</item>
+        <item>El Molino</item>
+        <item>Fonseca</item>
+        <item>Hatonuevo</item>
+        <item>Maicao</item>
+        <item>Manaure</item>
+        <item>Uribia</item>
+        <item>Urumita</item>
+        <item>Villanueva</item>
+        <item>Santa Marta</item>
+        <item>Algarrobo</item>
+        <item>Aracataca</item>
+        <item>AriguanÃ­</item>
+        <item>Cerro San Antonio</item>
+        <item>Chivolo</item>
+        <item>Concordia</item>
+        <item>El Banco</item>
+        <item>El PiÃ±on</item>
+        <item>El RetÃ©n</item>
+        <item>FundaciÃ³n</item>
+        <item>Guamal</item>
+        <item>Nueva Granada</item>
+        <item>Pedraza</item>
+        <item>Pivijay</item>
+        <item>Plato</item>
+        <item>Remolino</item>
+        <item>Salamina</item>
+        <item>San ZenÃ³n</item>
+        <item>Santa Ana</item>
+        <item>Sitionuevo</item>
+        <item>Tenerife</item>
+        <item>ZapayÃ¡n</item>
+        <item>Zona Bananera</item>
+        <item>Villavicencio</item>
+        <item>Acacias</item>
+        <item>Cabuyaro</item>
+        <item>Cubarral</item>
+        <item>Cumaral</item>
+        <item>El Calvario</item>
+        <item>El Castillo</item>
+        <item>El Dorado</item>
+        <item>Granada</item>
+        <item>Guamal</item>
+        <item>MapiripÃ¡n</item>
+        <item>Mesetas</item>
+        <item>La Macarena</item>
+        <item>LejanÃ­as</item>
+        <item>Puerto Concordia</item>
+        <item>Puerto GaitÃ¡n</item>
+        <item>Puerto LÃ³pez</item>
+        <item>Puerto Lleras</item>
+        <item>Puerto Rico</item>
+        <item>Restrepo</item>
+        <item>San Juanito</item>
+        <item>San MartÃ­n</item>
+        <item>Vista Hermosa</item>
+        <item>Pasto</item>
+        <item>AlbÃ¡n</item>
+        <item>Aldana</item>
+        <item>AncuyÃ¡</item>
+        <item>Barbacoas</item>
+        <item>ColÃ³n</item>
+        <item>Consaca</item>
+        <item>Contadero</item>
+        <item>CÃ³rdoba</item>
+        <item>Cuaspud</item>
+        <item>Cumbal</item>
+        <item>Cumbitara</item>
+        <item>El Charco</item>
+        <item>El PeÃ±ol</item>
+        <item>El Rosario</item>
+        <item>El Tambo</item>
+        <item>Funes</item>
+        <item>Guachucal</item>
+        <item>Guaitarilla</item>
+        <item>GualmatÃ¡n</item>
+        <item>Iles</item>
+        <item>ImuÃ©s</item>
+        <item>Ipiales</item>
+        <item>La Cruz</item>
+        <item>La Florida</item>
+        <item>La Llanada</item>
+        <item>La Tola</item>
+        <item>La UniÃ³n</item>
+        <item>Leiva</item>
+        <item>Linares</item>
+        <item>Los Andes</item>
+        <item>MagÃ¼Ã­</item>
+        <item>Mallama</item>
+        <item>Mosquera</item>
+        <item>NariÃ±o</item>
+        <item>Olaya Herrera</item>
+        <item>Ospina</item>
+        <item>Francisco Pizarro</item>
+        <item>Policarpa</item>
+        <item>PotosÃ­</item>
+        <item>Providencia</item>
+        <item>Puerres</item>
+        <item>Pupiales</item>
+        <item>Ricaurte</item>
+        <item>Roberto PayÃ¡n</item>
+        <item>Samaniego</item>
+        <item>SandonÃ¡</item>
+        <item>San Bernardo</item>
+        <item>San Lorenzo</item>
+        <item>San Pablo</item>
+        <item>Santa BÃ¡rbara</item>
+        <item>Sapuyes</item>
+        <item>Taminango</item>
+        <item>Tangua</item>
+        <item>TÃºquerres</item>
+        <item>Yacuanquer</item>
+        <item>Armenia</item>
+        <item>Buenavista</item>
+        <item>Circasia</item>
+        <item>CÃ³rdoba</item>
+        <item>Filandia</item>
+        <item>La Tebaida</item>
+        <item>Montenegro</item>
+        <item>Pijao</item>
+        <item>Quimbaya</item>
+        <item>Salento</item>
+        <item>Pereira</item>
+        <item>ApÃ­a</item>
+        <item>Balboa</item>
+        <item>Dosquebradas</item>
+        <item>GuÃ¡tica</item>
+        <item>La Celia</item>
+        <item>La Virginia</item>
+        <item>Marsella</item>
+        <item>MistratÃ³</item>
+        <item>Pueblo Rico</item>
+        <item>QuinchÃ­a</item>
+        <item>Santuario</item>
+        <item>Bucaramanga</item>
+        <item>Aguada</item>
+        <item>Albania</item>
+        <item>Aratoca</item>
+        <item>Barbosa</item>
+        <item>Barichara</item>
+        <item>Barrancabermeja</item>
+        <item>Betulia</item>
+        <item>BolÃ­var</item>
+        <item>Cabrera</item>
+        <item>California</item>
+        <item>CarcasÃ­</item>
+        <item>CepitÃ¡</item>
+        <item>Cerrito</item>
+        <item>CharalÃ¡</item>
+        <item>Charta</item>
+        <item>ChipatÃ¡</item>
+        <item>Cimitarra</item>
+        <item>ConcepciÃ³n</item>
+        <item>Confines</item>
+        <item>ContrataciÃ³n</item>
+        <item>Coromoro</item>
+        <item>CuritÃ­</item>
+        <item>El Guacamayo</item>
+        <item>El PlayÃ³n</item>
+        <item>Encino</item>
+        <item>Enciso</item>
+        <item>FloriÃ¡n</item>
+        <item>Floridablanca</item>
+        <item>GalÃ¡n</item>
+        <item>Gambita</item>
+        <item>GirÃ³n</item>
+        <item>Guaca</item>
+        <item>Guadalupe</item>
+        <item>GuapotÃ¡</item>
+        <item>GuavatÃ¡</item>
+        <item>GÃ¼epsa</item>
+        <item>JesÃºs MarÃ­a</item>
+        <item>JordÃ¡n</item>
+        <item>La Belleza</item>
+        <item>LandÃ¡zuri</item>
+        <item>La Paz</item>
+        <item>LebrÃ­ja</item>
+        <item>Los Santos</item>
+        <item>Macaravita</item>
+        <item>MÃ¡laga</item>
+        <item>Matanza</item>
+        <item>Mogotes</item>
+        <item>Molagavita</item>
+        <item>Ocamonte</item>
+        <item>Oiba</item>
+        <item>Onzaga</item>
+        <item>Palmar</item>
+        <item>PÃ¡ramo</item>
+        <item>Piedecuesta</item>
+        <item>Pinchote</item>
+        <item>Puente Nacional</item>
+        <item>Rionegro</item>
+        <item>San AndrÃ©s</item>
+        <item>San Gil</item>
+        <item>San JoaquÃ­n</item>
+        <item>San Miguel</item>
+        <item>Santa BÃ¡rbara</item>
+        <item>Simacota</item>
+        <item>Socorro</item>
+        <item>Suaita</item>
+        <item>Sucre</item>
+        <item>SuratÃ¡</item>
+        <item>Tona</item>
+        <item>VÃ©lez</item>
+        <item>Vetas</item>
+        <item>Villanueva</item>
+        <item>Zapatoca</item>
+        <item>Sincelejo</item>
+        <item>Buenavista</item>
+        <item>Caimito</item>
+        <item>Coloso</item>
+        <item>CoveÃ±as</item>
+        <item>ChalÃ¡n</item>
+        <item>El Roble</item>
+        <item>Galeras</item>
+        <item>Guaranda</item>
+        <item>La UniÃ³n</item>
+        <item>Los Palmitos</item>
+        <item>Majagual</item>
+        <item>Morroa</item>
+        <item>Ovejas</item>
+        <item>Palmito</item>
+        <item>San Benito Abad</item>
+        <item>San Marcos</item>
+        <item>San Onofre</item>
+        <item>San Pedro</item>
+        <item>Sucre</item>
+        <item>TolÃº Viejo</item>
+        <item>Alpujarra</item>
+        <item>Alvarado</item>
+        <item>Ambalema</item>
+        <item>Armero</item>
+        <item>Ataco</item>
+        <item>Cajamarca</item>
+        <item>Chaparral</item>
+        <item>Coello</item>
+        <item>Coyaima</item>
+        <item>Cunday</item>
+        <item>Dolores</item>
+        <item>Espinal</item>
+        <item>Falan</item>
+        <item>Flandes</item>
+        <item>Fresno</item>
+        <item>Guamo</item>
+        <item>Herveo</item>
+        <item>Honda</item>
+        <item>Icononzo</item>
+        <item>Mariquita</item>
+        <item>Melgar</item>
+        <item>Murillo</item>
+        <item>Natagaima</item>
+        <item>Ortega</item>
+        <item>Palocabildo</item>
+        <item>Piedras</item>
+        <item>Planadas</item>
+        <item>Prado</item>
+        <item>PurificaciÃ³n</item>
+        <item>Rio Blanco</item>
+        <item>Roncesvalles</item>
+        <item>Rovira</item>
+        <item>SaldaÃ±a</item>
+        <item>Santa Isabel</item>
+        <item>Venadillo</item>
+        <item>Villahermosa</item>
+        <item>Villarrica</item>
+        <item>Arauquita</item>
+        <item>Cravo Norte</item>
+        <item>Fortul</item>
+        <item>Puerto RondÃ³n</item>
+        <item>Saravena</item>
+        <item>Tame</item>
+        <item>Arauca</item>
+        <item>Yopal</item>
+        <item>Aguazul</item>
+        <item>ChÃ¡meza</item>
+        <item>Hato Corozal</item>
+        <item>La Salina</item>
+        <item>Monterrey</item>
+        <item>Pore</item>
+        <item>Recetor</item>
+        <item>Sabanalarga</item>
+        <item>SÃ¡cama</item>
+        <item>Tauramena</item>
+        <item>Trinidad</item>
+        <item>Villanueva</item>
+        <item>Mocoa</item>
+        <item>ColÃ³n</item>
+        <item>Orito</item>
+        <item>Puerto Caicedo</item>
+        <item>Puerto GuzmÃ¡n</item>
+        <item>LeguÃ­zamo</item>
+        <item>Sibundoy</item>
+        <item>San Francisco</item>
+        <item>San Miguel</item>
+        <item>Santiago</item>
+        <item>Leticia</item>
+        <item>El Encanto</item>
+        <item>La Chorrera</item>
+        <item>La Pedrera</item>
+        <item>La Victoria</item>
+        <item>Puerto Arica</item>
+        <item>Puerto NariÃ±o</item>
+        <item>Puerto Santander</item>
+        <item>TarapacÃ¡</item>
+        <item>InÃ­rida</item>
+        <item>Barranco Minas</item>
+        <item>Mapiripana</item>
+        <item>San Felipe</item>
+        <item>Puerto Colombia</item>
+        <item>La Guadalupe</item>
+        <item>Cacahual</item>
+        <item>Pana Pana</item>
+        <item>MitÃº</item>
+        <item>CarurÃº</item>
+        <item>Taraira</item>
+        <item>Papunahua</item>
+        <item>YavaratÃ©</item>
+        <item>Pacoa</item>
+        <item>Morichal</item>
+        <item>Puerto CarreÃ±o</item>
+        <item>La Primavera</item>
+        <item>Santa RosalÃ­a</item>
+        <item>Cumaribo</item>
+        <item>San JosÃ© del Fragua</item>
+        <item>Barranca de UpÃ­a</item>
+        <item>Palmas del Socorro</item>
+        <item>San Juan de RÃ­o Seco</item>
+        <item>Juan de Acosta</item>
+        <item>Fuente de Oro</item>
+        <item>San Luis de Gaceno</item>
+        <item>El Litoral del San Juan</item>
+        <item>Villa de San Diego de Ubate</item>
+        <item>Barranco de Loba</item>
+        <item>TogÃ¼Ã­</item>
+        <item>Santa Rosa del Sur</item>
+        <item>El CantÃ³n del San Pablo</item>
+        <item>Villa de Leyva</item>
+        <item>San SebastiÃ¡n de Buenavista</item>
+        <item>Paz de RÃ­o</item>
+        <item>Hatillo de Loba</item>
+        <item>Sabanas de San Angel</item>
+        <item>Calamar</item>
+        <item>RÃ­o de Oro</item>
+        <item>San Pedro de Uraba</item>
+        <item>San JosÃ© del Guaviare</item>
+        <item>Santa Rosa de Viterbo</item>
+        <item>Santander de Quilichao</item>
+        <item>Miraflores</item>
+        <item>SantafÃ© de Antioquia</item>
+        <item>San Carlos de Guaroa</item>
+        <item>Palmar de Varela</item>
+        <item>Santa Rosa de Osos</item>
+        <item>San AndrÃ©s de CuerquÃ­a</item>
+        <item>Valle de San Juan</item>
+        <item>San Vicente de ChucurÃ­</item>
+        <item>San JosÃ© de Miranda</item>
+        <item>Providencia</item>
+        <item>Santa Rosa de Cabal</item>
+        <item>Guayabal de Siquima</item>
+        <item>BelÃ©n de Los Andaquies</item>
+        <item>Paz de Ariporo</item>
+        <item>Santa Helena del OpÃ³n</item>
+        <item>San Pablo de Borbur</item>
+        <item>La Jagua del Pilar</item>
+        <item>La Jagua de Ibirico</item>
+        <item>San Luis de SincÃ©</item>
+        <item>San Luis de Gaceno</item>
+        <item>El Carmen de BolÃ­var</item>
+        <item>El Carmen de Atrato</item>
+        <item>San Juan de Betulia</item>
+        <item>PijiÃ±o del Carmen</item>
+        <item>VigÃ­a del Fuerte</item>
+        <item>San MartÃ­n de Loba</item>
+        <item>Altos del Rosario</item>
+        <item>Carmen de Apicala</item>
+        <item>San Antonio del Tequendama</item>
+        <item>Sabana de Torres</item>
+        <item>El Retorno</item>
+        <item>San JosÃ© de UrÃ©</item>
+        <item>San Pedro de Cartago</item>
+        <item>Campo de La Cruz</item>
+        <item>San Juan de Arama</item>
+        <item>San JosÃ© de La MontaÃ±a</item>
+        <item>Cartagena del ChairÃ¡</item>
+        <item>San JosÃ© del Palmar</item>
+        <item>Agua de Dios</item>
+        <item>San Jacinto del Cauca</item>
+        <item>San AgustÃ­n</item>
+        <item>El TablÃ³n de GÃ³mez</item>
+        <item>San AndrÃ©s</item>
+        <item>San JosÃ© de Pare</item>
+        <item>Valle de Guamez</item>
+        <item>San Pablo de Borbur</item>
+        <item>Santiago de TolÃº</item>
+        <item>BogotÃ¡ D.C.</item>
+        <item>Carmen de Carupa</item>
+        <item>CiÃ©naga de Oro</item>
+        <item>San Juan de UrabÃ¡</item>
+        <item>San Juan del Cesar</item>
+        <item>El Carmen de ChucurÃ­</item>
+        <item>El Carmen de Viboral</item>
+        <item>BelÃ©n de UmbrÃ­a</item>
+        <item>BelÃ©n de Bajira</item>
+        <item>Valle de San JosÃ©</item>
+        <item>San Luis</item>
+        <item>San Miguel de Sema</item>
+        <item>San Antonio</item>
+        <item>San Benito</item>
+        <item>Vergara</item>
+        <item>San Carlos</item>
+        <item>Puerto AlegrÃ­a</item>
+        <item>Hato</item>
+        <item>San Jacinto</item>
+        <item>San SebastiÃ¡n</item>
+        <item>San Carlos</item>
+        <item>Tuta</item>
+        <item>Silos</item>
+        <item>CÃ¡cota</item>
+        <item>El Dovio</item>
+        <item>Toledo</item>
+        <item>Roldanillo</item>
+        <item>Mutiscua</item>
+        <item>Argelia</item>
+        <item>El Zulia</item>
+        <item>Salazar</item>
+        <item>Sevilla</item>
+        <item>Zarzal</item>
+        <item>Cucutilla</item>
+        <item>El Cerrito</item>
+        <item>Cartago</item>
+        <item>Caicedonia</item>
+        <item>Puerto Santander</item>
+        <item>Gramalote</item>
+        <item>El Cairo</item>
+        <item>El Tarra</item>
+        <item>La UniÃ³n</item>
+        <item>Restrepo</item>
+        <item>Teorama</item>
+        <item>Dagua</item>
+        <item>Arboledas</item>
+        <item>GuacarÃ­</item>
+        <item>Lourdes</item>
+        <item>Ansermanuevo</item>
+        <item>Bochalema</item>
+        <item>Bugalagrande</item>
+        <item>ConvenciÃ³n</item>
+        <item>HacarÃ­</item>
+        <item>La Victoria</item>
+        <item>HerrÃ¡n</item>
+        <item>Ginebra</item>
+        <item>Yumbo</item>
+        <item>Obando</item>
+        <item>TibÃº</item>
+        <item>San Cayetano</item>
+        <item>San Calixto</item>
+        <item>BolÃ­var</item>
+        <item>La Playa</item>
+        <item>Cali</item>
+        <item>San Pedro</item>
+        <item>Guadalajara de Buga</item>
+        <item>ChinÃ¡cota</item>
+        <item>Ragonvalia</item>
+        <item>La Esperanza</item>
+        <item>Villa del Rosario</item>
+        <item>ChitagÃ¡</item>
+        <item>Calima</item>
+        <item>Sardinata</item>
+        <item>AndalucÃ­a</item>
+        <item>Pradera</item>
+        <item>Abrego</item>
+        <item>Los Patios</item>
+        <item>OcaÃ±a</item>
+        <item>Bucarasica</item>
+        <item>Yotoco</item>
+        <item>Palmira</item>
+        <item>RiofrÃ­o</item>
+        <item>Santiago</item>
+        <item>AlcalÃ¡</item>
+        <item>Versalles</item>
+        <item>Labateca</item>
+        <item>CachirÃ¡</item>
+        <item>Villa Caro</item>
+        <item>Durania</item>
+        <item>El Ãguila</item>
+        <item>Toro</item>
+        <item>Candelaria</item>
+        <item>La Cumbre</item>
+        <item>Ulloa</item>
+        <item>Trujillo</item>
+        <item>Vijes</item>
+        <item>ChimÃ¡</item>
+        <item>SampuÃ©s</item>
+        <item>NunchÃ­a</item>
+        <item>Pamplona</item>
+        <item>AlbÃ¡n</item>
+        <item>MontelÃ­bano</item>
+        <item>Puerto AsÃ­s</item>
+        <item>Corozal</item>
+        <item>Buesaco</item>
+        <item>ManÃ­</item>
+        <item>El PeÃ±Ã³n</item>
+        <item>TuluÃ¡</item>
+        <item>Casabianca</item>
+        <item>Anolaima</item>
+        <item>ChÃ­a</item>
+        <item>San AndrÃ©s de Tumaco</item>
+        <item>MilÃ¡n</item>
+        <item>Capitanejo</item>
+        <item>AnzoÃ¡tegui</item>
+        <item>Florida</item>
+        <item>RepelÃ³n</item>
+        <item>Frontino</item>
+        <item>El PeÃ±Ã³n</item>
+        <item>Pamplonita</item>
+        <item>Miriti ParanÃ¡</item>
+        <item>TÃ¡mara</item>
+        <item>Tibasosa</item>
+        <item>PÃ¡ez</item>
+        <item>IbaguÃ©</item>
+        <item>Puerto Colombia</item>
+        <item>BelÃ©n</item>
+        <item>SopÃ³</item>
+        <item>Carmen del Darien</item>
+        <item>Gama</item>
+        <item>Sasaima</item>
+        <item>ChachagÃ¼Ã­</item>
+        <item>CÃºcuta</item>
+        <item>Cartagena</item>
+        <item>Granada</item>
+        <item>Santa BÃ¡rbara de Pinto</item>
+        <item>MarÃ­a la Baja</item>
+        <item>La MontaÃ±ita</item>
+        <item>San Vicente del CaguÃ¡n</item>
+        <item>El PeÃ±Ã³n</item>
+        <item>JardÃ­n</item>
+        <item>JamundÃ­</item>
+        <item>TadÃ³</item>
+        <item>OrocuÃ©</item>
+        <item>LÃ­bano</item>
+        <item>YacopÃ­</item>
+        <item>CalarcÃ¡</item>
+        <item>SonsÃ³n</item>
+        <item>El Carmen</item>
+        <item>LÃ©rida</item>
+        <item>La Apartada</item>
+        <item>San CristÃ³bal</item>
+        <item>FusagasugÃ¡</item>
+        <item>Zambrano</item>
+        <item>La Uvita</item>
+        <item>ZipaquirÃ¡</item>
+        <item>GÃ©nova</item>
+        <item>SuÃ¡rez</item>
+        <item>Castilla la Nueva</item>
+        <item>BelÃ©n</item>
+        <item>UniÃ³n Panamericana</item>
+        <item>Pueblo Viejo</item>
+        <item>VillagarzÃ³n</item>
+        <item>FacatativÃ¡</item>
+        <item>Puerto Libertador</item>
+        <item>Marquetalia</item>
+        <item>Arboleda</item>
+        <item>Buenaventura</item>
+        <item>CiÃ©naga</item>
+        <item>Ponedera</item>
+    </string-array>
+</resources>
