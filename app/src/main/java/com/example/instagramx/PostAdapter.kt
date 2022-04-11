@@ -1,6 +1,7 @@
 package com.example.instagramx
 
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,10 +31,10 @@ class PostAdapter : RecyclerView.Adapter<PostView>(), PostView.OnPostDelete {
         //Bind View Holder
         holder.usernameTxt.text = post.username
         holder.postImg.setImageURI(Uri.parse(post.imageUri))
-        if(post.userphotoBitmap==null){
+        if(post.userphotoUri==null){
             holder.userPhoto.setImageResource(R.drawable.profile)
         }else{
-            holder.userPhoto.setImageBitmap(post.userphotoBitmap)
+            holder.userPhoto.setImageURI(Uri.parse(post.imageUri))
         }
         if(post.location!=null && post.location!="") {
             holder.locationTxt.visibility = View.VISIBLE
@@ -77,6 +78,7 @@ class PostAdapter : RecyclerView.Adapter<PostView>(), PostView.OnPostDelete {
     }
 
     fun addPost(post: Post){
+        Log.e("Buttonpressed","Adapter")
         posts.add(post)
     }
 }

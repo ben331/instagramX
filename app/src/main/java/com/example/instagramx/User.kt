@@ -5,7 +5,7 @@ import android.net.Uri
 import com.google.gson.Gson
 
 data class User (var id: String, var password: String){
-  var photo:Bitmap? = null
+  var photo:String? = null
   var name = ""
 
   override fun toString(): String {

@@ -3,6 +3,7 @@ package com.example.instagramx
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -34,7 +35,7 @@ class ProfileFragment : Fragment() {
         binding.profileName.setText(SingleLoggedUser.user?.name)
         binding.profileUsername.setText(SingleLoggedUser.user?.id)
         val photo = SingleLoggedUser.user?.photo
-        if(photo!=null) binding.profilePhoto.setImageBitmap(photo)
+        if(photo!=null) binding.profilePhoto.setImageURI(Uri.parse(photo))
 
         binding.profileChangeBtn.setOnClickListener{
             val intent = Intent(Intent.ACTION_GET_CONTENT)
@@ -60,8 +61,9 @@ class ProfileFragment : Fragment() {
 
     private fun onResult(result: ActivityResult){
         if(result.resultCode==Activity.RESULT_OK){
-            SingleLoggedUser.user?.photo = result.data?.extras?.get("data") as Bitmap
-            binding.profilePhoto.setImageBitmap(SingleLoggedUser.user?.photo)
+            val uri = result.data?.data
+            SingleLoggedUser.user?.photo = uri.toString()
+            binding.profilePhoto.setImageURI(uri)
         }
     }
 

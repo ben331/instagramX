@@ -1,6 +1,7 @@
 package com.example.instagramx
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,6 +45,7 @@ class HomeFragment : Fragment () {
     }
 
     fun newPost(post: Post) {
+        Log.e("Buttonpressed","Home")
         adapter.addPost(post)
     }
 }

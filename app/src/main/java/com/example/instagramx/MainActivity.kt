@@ -4,10 +4,10 @@ import android.Manifest
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
@@ -149,7 +149,6 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
     private fun onGalleryResult(result: ActivityResult) {
         if (result.resultCode == RESULT_OK) {
             postFragment.postUri = result.data?.data.toString()
-            postFragment.thumbnail = result.data?.extras?.get("data") as Bitmap
             showFragment(postFragment)
         } else if (result.resultCode == RESULT_CANCELED) {
             showFragment(homeFragment)
@@ -173,7 +172,6 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
 
     private fun onCameraResult(result: ActivityResult) {
         if (result.resultCode == RESULT_OK) {
-            postFragment.thumbnail = result.data?.extras?.get("data") as Bitmap
             postFragment.postUri = file!!.path
             showFragment(postFragment)
         } else if (result.resultCode == RESULT_CANCELED) {
@@ -215,7 +213,9 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
 
     //Overwritten Methods as listener PostFragment.OnPostListener ----------------------------------
     override fun newPost(post: Post?) {
+        Log.e("Listener","Listener")
         if (post != null) {
+            Log.e("Buttonpressed","Non null")
             homeFragment.newPost(post)
         }
         showFragment(homeFragment)
@@ -224,7 +224,7 @@ class MainActivity : AppCompatActivity(), PostFragment.OnPostListener, ProfileFr
     //ProfileFragment.OnDoneChanges
     override fun doneChanges(done: Boolean) {
         if (done) {
-            LoginActivity().updateUser()
+            //LoginActivity().updateUser()
             Toast.makeText(this, "Saved changes", Toast.LENGTH_SHORT).show()
         }
         showFragment(homeFragment)

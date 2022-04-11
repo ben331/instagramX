@@ -1,7 +1,8 @@
 package com.example.instagramx
 
-import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +16,6 @@ class PostFragment : Fragment() {
     private val binding get() = _binding!!
 
     //Status of postFragment: Uri from ImageCapture
-    var thumbnail: Bitmap?=null
     var postUri: String?=null
 
     //Listener
@@ -26,10 +26,11 @@ class PostFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        Log.e("","CreatePost")
         _binding = FragmentPostBinding.inflate(inflater, container, false)
 
         //Show preview post
-        binding.postImage.setImageBitmap(thumbnail)
+        binding.postImage.setImageURI(Uri.parse(postUri))
 
         //Cancel posts and back
         binding.backBtn.setOnClickListener{
@@ -37,6 +38,7 @@ class PostFragment : Fragment() {
         }
 
         binding.postShareBtn.setOnClickListener{
+            Log.e(">>>>","Buttonpressed")
             val caption = binding.postCaptionTxt.text.toString()
             val location = binding.postLocationSp.selectedItem.toString()
             val username = SingleLoggedUser.user!!.id
@@ -44,7 +46,7 @@ class PostFragment : Fragment() {
             listener.newPost(post)
         }
         /* Inflate the layout for this fragment */
-        return inflater.inflate(R.layout.fragment_post, container, false)
+        return binding.root
     }
 
     override fun onDestroyView() {
